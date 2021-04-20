@@ -1,0 +1,14 @@
+package de.kleindev.loki.listeners;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * This annotation prevents classes from registering by package path
+ */
+@Retention(RetentionPolicy.RUNTIME)
+ @Target(ElementType.TYPE)
+public @interface SkipListenerRegistration {
+}

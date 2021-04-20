@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.18'
+    compile 'org.projectlombok:lombok:1.18.18'
 
     // JUnit
     //
@@ -19,7 +19,7 @@ dependencies {
 
     // Javacord
     // https://github.com/Javacord/Javacord
-    implementation 'org.javacord:javacord:3.3.0'
+    compile 'org.javacord:javacord:3.3.0'
 
     // Emoji Parser
     // https://github.com/vdurmont/emoji-java
@@ -27,27 +27,27 @@ dependencies {
 
     // Lombok
     // https://projectlombok.org/setup/gradle
-    implementation 'org.projectlombok:lombok:1.18.20'
+    compile 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
     // GSON
     //
-    implementation 'com.google.code.gson:gson:2.8.6'
+    compile 'com.google.code.gson:gson:2.8.6'
 
     // YAML
     // https://mvnrepository.com/artifact/org.yaml/snakeyaml
-    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.28'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.28'
 
     // Reflections
     // https://mvnrepository.com/artifact/org.reflections/reflections
-    implementation group: 'org.reflections', name: 'reflections', version: '0.9.11'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
 
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
     // https://mvnrepository.com/artifact/com.google.guava/guava
-    implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
+//    compile group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
 
 }
 
@@ -55,12 +55,15 @@ test {
     useJUnitPlatform()
 }
 
-jar {
+task fatJar(type: Jar) {
     manifest {
-        attributes "Main-Class": "de.kleindev.loki"
+        attributes 'Implementation-Title': 'Loki',
+                'Implementation-Version': getArchiveVersion(),
+                'Main-Class': 'de.kleindev.loki.Main'
     }
-
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    setArchivesBaseName(project.name + '-all')
+    from { (configurations.runtime).collect { it.isDirectory() ? it : zipTree(it) } } {
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
     }
+    with jar
 }

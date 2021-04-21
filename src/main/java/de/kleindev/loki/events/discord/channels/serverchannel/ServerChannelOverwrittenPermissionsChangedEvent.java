@@ -21,7 +21,7 @@ public class ServerChannelOverwrittenPermissionsChangedEvent extends Event {
     private Permissions newPermissions;
     private Optional<Role> role;
     private Optional<User> user;
-    private DiscordEntity entity;
+    private Optional<DiscordEntity> entity;
 
     public ServerChannelOverwrittenPermissionsChangedEvent(ServerChannelChangeOverwrittenPermissionsEvent e){
         api = e.getApi();
@@ -31,7 +31,7 @@ public class ServerChannelOverwrittenPermissionsChangedEvent extends Event {
         newPermissions = e.getNewPermissions();
         role = e.getRole();
         user = e.getUser();
-        entity = e.getEntity().isPresent() ? e.getEntity().get() : null;
+        entity = e.getEntity();
     }
 
     public DiscordApi getApi() {
@@ -62,7 +62,7 @@ public class ServerChannelOverwrittenPermissionsChangedEvent extends Event {
         return oldPermissions;
     }
 
-    public DiscordEntity getEntity() {
+    public Optional<DiscordEntity> getEntity() {
         return entity;
     }
 }

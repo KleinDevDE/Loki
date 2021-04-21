@@ -23,7 +23,7 @@ import java.util.concurrent.CompletableFuture;
 public class ReactionRemovedEvent extends Event {
     private DiscordApi api;
     private TextChannel textChannel;
-    private User user;
+    private Optional<User> user;
     private Emoji emoji;
     private CompletableFuture<List<User>> users;
     private Optional<Reaction> reaction;
@@ -44,7 +44,7 @@ public class ReactionRemovedEvent extends Event {
         textChannel = e.getChannel();
         users = e.getUsers();
         reaction = e.getReaction();
-        user = e.getUser().get();
+        user = e.getUser();
         emoji = e.getEmoji();
         message = e.getMessage();
         messageID = e.getMessageId();
@@ -71,7 +71,7 @@ public class ReactionRemovedEvent extends Event {
         return users;
     }
 
-    public User getUser() {
+    public Optional<User> getUser() {
         return user;
     }
 

@@ -20,6 +20,9 @@ public class UserInfoCommand extends Command {
         }
 
         for (User user : mentionedUsers){
+            if (user.isYourself() && mentionedUsers.size() != 1){
+                continue;
+            }
             printUserInfo(commandSender, user);
         }
     }

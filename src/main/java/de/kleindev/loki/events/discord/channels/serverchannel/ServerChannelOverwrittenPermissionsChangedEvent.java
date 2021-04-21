@@ -31,7 +31,7 @@ public class ServerChannelOverwrittenPermissionsChangedEvent extends Event {
         newPermissions = e.getNewPermissions();
         role = e.getRole();
         user = e.getUser();
-        entity = e.getEntity().get();
+        entity = e.getEntity().isPresent() ? e.getEntity().get() : null;
     }
 
     public DiscordApi getApi() {

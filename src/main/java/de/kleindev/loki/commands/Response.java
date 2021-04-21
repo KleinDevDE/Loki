@@ -15,6 +15,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -68,6 +69,16 @@ public class Response {
 
     public Response setThumbnail(Icon icon){
         embedBuilder.setThumbnail(icon);
+        return this;
+    }
+
+    public Response setThumbnail(BufferedImage bufferedImage){
+        embedBuilder.setThumbnail(bufferedImage);
+        return this;
+    }
+
+    public Response setThumbnail(byte[] bytes){
+        embedBuilder.setThumbnail(bytes);
         return this;
     }
 

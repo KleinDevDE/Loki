@@ -1,12 +1,12 @@
 package de.kleindev.loki.utils;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.nio.Buffer;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DevTweaks {
@@ -177,6 +177,18 @@ public class DevTweaks {
 			// handle if you like
 		}
 		return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
+	}
+
+	public static BufferedImage base64ToBufferedImage(String base64){
+		try {
+			return ImageIO.read(
+					new ByteArrayInputStream(
+							Base64.getDecoder().decode(base64)
+					)
+			);
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 }

@@ -69,6 +69,11 @@ public class Response {
         return this;
     }
 
+    public Response setColor(Color color){
+        embedBuilder.setColor(color);
+        return this;
+    }
+
     public EmbedListBuilder getEmbedListBuilder(String title_left, String title_right){
         return new EmbedListBuilder(this, embedBuilder, title_left, title_right);
     }

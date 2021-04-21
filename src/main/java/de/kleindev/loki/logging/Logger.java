@@ -80,7 +80,7 @@ public class Logger {
             }
             _log(FORMAT.format(new Date()) + " ERROR    | " + prefix + message);
         } else if (logType == LogType.TRACE) {
-            if (!Loki.getInstance().getLokiConfiguration().logType.equals("trace")){
+            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")){
                 return;
             }
             if (print) {
@@ -103,7 +103,7 @@ public class Logger {
             _log(FORMAT.format(new Date()) + " !FATAL!  | " + prefix + message);
             Loki.getInstance().getEventManager().callEvent(new SupportBotFatalLogEvent(message));
         } else if (logType == LogType.DEBUG) {
-            if (!Loki.getInstance().getLokiConfiguration().logType.equals("debug") || !Loki.getInstance().getLokiConfiguration().logType.equals("trace")){
+            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("debug") || !Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")){
                 return;
             }
             //TODO check if debugging is enabled for specific plugin

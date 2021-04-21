@@ -53,5 +53,11 @@ public class CommandSender {
         }
     }
 
-    //TODO Add things like sendMessageToChannel(String message, int deleteAfterSeconds);
+    public void deleteCommandMessage(){
+        this.message.delete();
+    }
+
+    public void deleteCommandMessageLater(int seconds){
+        MessageTools.deleteMessageLater(this.message, seconds);
+    }
 }

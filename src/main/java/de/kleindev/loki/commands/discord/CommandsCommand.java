@@ -12,7 +12,7 @@ public class CommandsCommand extends Command {
     @Override
     public void executeDiscord(CommandSender commandSender, String[] args) {
         Response response = new Response(commandSender.getMessage());
-        response.setDeletionTime(20);
+        response.setDeletionTime(-1);
         Response.EmbedListBuilder embedListBuilder = response.getEmbedListBuilder("Command", "Beschreibung");
         Stream<Command> commandStream = Loki.getInstance().getCommandManager().getCommands();
         AtomicInteger count = new AtomicInteger();

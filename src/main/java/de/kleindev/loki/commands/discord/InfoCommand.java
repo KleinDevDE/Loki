@@ -13,12 +13,12 @@ public class InfoCommand extends Command {
     @Override
     public void executeDiscord(CommandSender commandSender, String[] args) {
         Response response = new Response(commandSender.getMessage());
-        response.setDeletionTime(10);
+        response.setDeletionTime(-1);
         response.setColor(Color.cyan);
         response.setTitle("Informations about myself");
         response.setThumbnail("https://cdn.discordapp.com/avatars/221313993321480192/77ad2d2989d364fa401d5b4d5f019ab3.png");
         response.addField("Author", "KleinDev", false);
         response.addField("Version", Main.VERSION, false);
-        response.send(true);
+        response.send(false);
     }
 }

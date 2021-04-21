@@ -15,7 +15,7 @@ public class PluginsCommand extends Command {
     @Override
     public void executeDiscord(CommandSender commandSender, String[] args) {
         Response response = new Response(commandSender.getMessage());
-        response.setDeletionTime(10);
+        response.setDeletionTime(-1);
         Collection<BotPlugin> plugins = Loki.getInstance().getPluginManager().getActivePlugins();
         response.setTitle("Plugins ("+plugins.size()+"):");
         Response.EmbedListBuilder embedListBuilder = response.getEmbedListBuilder("Plugin (version)", "Autor");

@@ -54,7 +54,7 @@ public class AMessageCreateListener implements MessageCreateListener {
             }
 
             Logger.trace("MessageCreateEvent | execute command \""+command.getCommand()+"\" ...");
-            Logger.info("Command \""+messageSplitted[0].substring(1)+"\" executed by \""+e.getMessage().getAuthor().getName()+"\"");
+            Logger.info("Command \""+cmdString+"\" executed by \""+e.getMessage().getAuthor().getName()+"\"");
             command.executeDiscord(new CommandSender(e.getMessage()), args);
         }
     }

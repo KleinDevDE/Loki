@@ -51,6 +51,7 @@ public class Main {
 
     private static void registerShutdownHook(){
         Runtime.getRuntime().addShutdownHook(new Thread(()-> {
+            Loki.getInstance().getDiscordApi().updateStatus(UserStatus.OFFLINE);
             if(ApplicationManager.shouldReboot)
                 return;
             Loki.getInstance().getEventManager().callEvent(new SupportBotShutdownEvent());

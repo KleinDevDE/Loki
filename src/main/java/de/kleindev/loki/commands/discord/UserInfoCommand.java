@@ -30,8 +30,8 @@ public class UserInfoCommand extends Command {
         response.setThumbnail(user.getAvatar());
         response.addField("**Discord ID**", String.valueOf(user.getId()), true);
         response.addField("**Discord Nutzer seit**",  getRegisteredSince(user), true);
-
-        response.send(false);
+        response.setDeletionTime(20);
+        response.send(true);
     }
 
     private String getRegisteredSince(User user){

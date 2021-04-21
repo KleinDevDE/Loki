@@ -1,6 +1,7 @@
 package de.kleindev.loki.commands;
 
 import com.vdurmont.emoji.EmojiParser;
+import de.kleindev.loki.Loki;
 import de.kleindev.loki.logging.LogType;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.utils.MessageTools;
@@ -37,6 +38,7 @@ public class Response {
         this.embedBuilder = builder;
         this.channel = message.getChannel();
         this.message = message;
+        initBuilder(message.getAuthor().getDisplayName());
     }
 
     public Response(Channel channel, User user){
@@ -101,7 +103,7 @@ public class Response {
     public Message send(boolean deleteCommandMessage) {
         Message msg;
         if (channel instanceof ServerTextChannel)
-            if (deleteAfter < 0L)
+            if (deleteAfter < 1L)
                 msg = channel.asServerTextChannel().get().sendMessage(embedBuilder).join();
             else {
                 msg = channel.asServerTextChannel().get().sendMessage(embedBuilder).join();
@@ -124,7 +126,7 @@ public class Response {
 
         if (message != null) {
             if (deleteCommandMessage)
-                MessageTools.deleteMessageLater(message, 5);
+                MessageTools.deleteMessageLater(message, this.deleteAfter);
         } else
             Logger.log(LogType.WARNING, "Response.send(true) could not delete commandMessage cause of there is no one existing!");
         return msg;
@@ -133,6 +135,7 @@ public class Response {
     private void initBuilder(String author){
         embedBuilder.setColor(Color.CYAN);
         embedBuilder.setFooter("~ Executed by "+author);
+        embedBuilder.setThumbnail(Loki.getInstance().getDiscordApi().getYourself().getAvatar());
     }
 
     public static class EmbedListBuilder {

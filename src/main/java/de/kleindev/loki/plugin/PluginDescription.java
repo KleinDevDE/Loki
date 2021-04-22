@@ -1,7 +1,12 @@
 package de.kleindev.loki.plugin;
 
+import de.kleindev.loki.utils.configuration.file.FileConfiguration;
+import de.kleindev.loki.utils.configuration.file.YamlConfiguration;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class PluginDescription {
@@ -10,35 +15,33 @@ public class PluginDescription {
     private String[] authors;
     private String main;
 
-    public PluginDescription(InputStream pluginIniFile){
-        try {
-            Properties properties = new Properties();
-            properties.load(pluginIniFile);
-            pluginIniFile.close();
-            load(properties);
-        } catch (IOException e) {
-            Thread.currentThread().getUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
-        }
+    public PluginDescription(InputStream pluginYMLFile){
+        FileConfiguration configuration = YamlConfiguration.loadConfiguration(new InputStreamReader(pluginYMLFile));
+        load(configuration);
     }
 
-    public PluginDescription(Properties properties){
-        load(properties);
+    public PluginDescription(FileConfiguration configuration){
+        load(configuration);
     }
 
-    private void load(Properties properties){
+    private void load(FileConfiguration configuration){
         try {
-            if(!properties.containsKey("name"))
-                throw new PluginLoadException("plugin.ini file doesn't contain \"name\"");
-            if(!properties.containsKey("version"))
-                throw new PluginLoadException("plugin.ini file doesn't contain \"version\"");
-            if(!properties.containsKey("authors"))
-                throw new PluginLoadException("plugin.ini file doesn't contain \"authors\"");
-            if(!properties.containsKey("main"))
-                throw new PluginLoadException("plugin.ini file doesn't contain \"main\"");
-            pluginName = properties.getProperty("name");
-            version = properties.getProperty("version");
-            authors = properties.getProperty("authors").replace(" ", "").split(",");
-            main = properties.getProperty("main");
+            if(configuration.get("name") == null)
+                throw new PluginLoadException("plugin.yml file doesn't contain \"name\"");
+            if(configuration.get("version") == null)
+                throw new PluginLoadException("plugin.yml file doesn't contain \"version\"");
+            if(configuration.get("authors") == null && configuration.get("author") == null)
+                throw new PluginLoadException("plugin.yml file doesn't contain \"authors\"");
+            if(configuration.get("main") == null)
+                throw new PluginLoadException("plugin.yml file doesn't contain \"main\"");
+            pluginName = configuration.getString("name");
+            version = configuration.getString("version");
+            if (configuration.get("authors") == null){
+                authors = new String[]{configuration.getString("author")};
+            } else {
+                authors = configuration.getString("authors").replace(" ", "").split(",");
+            }
+            main = configuration.getString("main");
         }catch (PluginLoadException e) {
             Thread.currentThread().getUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
         }

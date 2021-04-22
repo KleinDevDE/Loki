@@ -59,7 +59,10 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Loki',
                 'Implementation-Version': getArchiveVersion(),
-                'Main-Class': 'de.kleindev.loki.Main'
+                'Main-Class': 'de.kleindev.loki.Main',
+                'Launcher-Agent-Class': 'de.kleindev.loki.Agent',
+                'Agent-Class': 'de.kleindev.loki.Agent',
+                'Premain-Class': 'de.kleindev.loki.Agent'
     }
     setArchivesBaseName(project.name + '-with-dependencies')
     from { (configurations.runtime).collect { it.isDirectory() ? it : zipTree(it) } } {

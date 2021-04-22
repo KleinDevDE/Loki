@@ -1,5 +1,6 @@
 package de.kleindev.loki.managers;
 
+import de.kleindev.loki.Agent;
 import de.kleindev.loki.Loki;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.plugin.BotPlugin;
@@ -44,7 +45,7 @@ public class PluginManager {
 
         Logger.log("Loading plugin \"" + pluginDescription.getPluginName() + "\"..");
 
-        ClassPathHacker.addURL(file.toURI().toURL());
+        Agent.appendJarFile(jarFile);
         pluginMainClass = ClassLoader.getSystemClassLoader().loadClass(pluginDescription.getMain().replace("/", ".").replace(".class", ""));
         if (!pluginMainClass.getSuperclass().equals(BotPlugin.class)) {
             throw new PluginLoadException("Plugin \"" + pluginDescription.getPluginName() + "\" doesn't contain a class which extends EoBotPlugin!");
@@ -52,8 +53,9 @@ public class PluginManager {
 
         BotPlugin plugin = (BotPlugin) pluginMainClass.getConstructor().newInstance();
         UUID pluginID = UUID.randomUUID();
+
         String pack = plugin.getPluginDescription().getMain().replace(
-                "." + plugin.getPluginDescription().getMain().split("\\.")[(pluginDescription.getMain().split("\\.").length) - 1], "");
+                "." + plugin.getPluginDescription().getMain().split("\\.")[(plugin.getPluginDescription().getMain().split("\\.").length) - 1], "");
 
         PluginEntry pluginEntry = new PluginEntry();
         pluginEntry.botPlugin = plugin;

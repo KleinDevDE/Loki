@@ -2,6 +2,9 @@ package de.kleindev.loki.plugin;
 
 
 import de.kleindev.loki.Main;
+import de.kleindev.loki.utils.configuration.file.FileConfiguration;
+import de.kleindev.loki.utils.configuration.file.YamlConfiguration;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.util.Properties;
@@ -19,12 +22,11 @@ public class InternalPlugin extends BotPlugin {
     }
 
     public InternalPlugin(){
-        Properties properties = new Properties();
-        properties.setProperty("name", "Internal");
-        properties.setProperty("version", Main.VERSION);
-        properties.setProperty("main", Main.class.getName());
-        properties.setProperty("authors", "KleinDev");
-
-        set(UUID.randomUUID(), new File("./"), new File("./"), new PluginDescription(properties));
+        FileConfiguration fileConfiguration = new YamlConfiguration();
+        fileConfiguration.set("name", "Internal");
+        fileConfiguration.set("version", Main.VERSION);
+        fileConfiguration.set("main", Main.class.getName());
+        fileConfiguration.set("authors", "KleinDev");
+        set(UUID.randomUUID(), new File("./"), new File("./"), new PluginDescription(fileConfiguration));
     }
 }

@@ -4,6 +4,7 @@ import com.vdurmont.emoji.EmojiParser;
 import de.kleindev.loki.Loki;
 import de.kleindev.loki.logging.LogType;
 import de.kleindev.loki.logging.Logger;
+import de.kleindev.loki.objects.CommandSender;
 import de.kleindev.loki.utils.MessageTools;
 import org.javacord.api.entity.Icon;
 import org.javacord.api.entity.channel.Channel;
@@ -11,7 +12,6 @@ import org.javacord.api.entity.channel.PrivateChannel;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 
 import java.awt.*;
@@ -42,9 +42,10 @@ public class Response {
         initBuilder(message.getAuthor().getDisplayName());
     }
 
-    public Response(Channel channel, User user){
-        this.channel = channel;
-        initBuilder(user.getName());
+    public Response(CommandSender commandSender){
+        this.channel = commandSender.getTextChannel();
+        this.message = commandSender.getMessage();
+        initBuilder(commandSender.getUser().getName());
     }
 
     public Response setTitle(String title){
@@ -125,14 +126,22 @@ public class Response {
         else return null;
 
         if (msg != null && msg.getContent() != null) {
+            Logger.log(LogType.TRACE, "Response.java -- loop emojies");
             for (String e : this.emojis) {
-                Logger.log(LogType.DEBUG, "Response.java:100 -- loop - " + e);
+                Logger.log(LogType.TRACE, "Response.java -- loop - " + e);
                 msg.addReaction(EmojiParser.parseToUnicode(e));
-                Logger.log(LogType.DEBUG, "Response.java:102 -- loop next round");
+                Logger.log(LogType.TRACE, "Response.java -- loop next round");
             }
-            Logger.log(LogType.DEBUG, "Response.java:104 -- addReactionAddListener");
-            if (reactionAddListener != null)
-                msg.addReactionAddListener(reactionAddListener);
+
+            if (reactionAddListener != null){
+                Logger.log(LogType.TRACE, "Response.java -- addReactionAddListener");
+                msg.addReactionAddListener(event -> {
+                    if (event.getReaction().isEmpty() || (event.getReaction().get().getUsers().join().size() == 1 && event.getReaction().get().containsYou())){
+                        return;
+                    }
+                    reactionAddListener.onReactionAdd(event);
+                });
+            }
         }
 
         if (message != null) {
@@ -165,9 +174,15 @@ public class Response {
             this.response = response;
         }
 
+        /**
+         *
+         * @param left Maximum 50 chars
+         * @param right Maximum 50 chars
+         * @return
+         */
         public EmbedListBuilder addLine(String left, String right) {
-            this.left.add(left);
-            this.right.add(right);
+            this.left.add(left.length() > 50 ? left.substring(0, 50) : left);
+            this.right.add(right.length() > 50 ? right.substring(0, 50) : right);
             return this;
         }
 

@@ -4,10 +4,8 @@ package de.kleindev.loki.plugin;
 import de.kleindev.loki.Main;
 import de.kleindev.loki.utils.configuration.file.FileConfiguration;
 import de.kleindev.loki.utils.configuration.file.YamlConfiguration;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
-import java.util.Properties;
 import java.util.UUID;
 
 public class InternalPlugin extends BotPlugin {

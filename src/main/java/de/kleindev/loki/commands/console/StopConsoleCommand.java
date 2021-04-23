@@ -1,6 +1,7 @@
 package de.kleindev.loki.commands.console;
 
-import de.kleindev.loki.commands.*;
+import de.kleindev.loki.commands.CommandInfo;
+import de.kleindev.loki.commands.ConsoleCommand;
 import de.kleindev.loki.logging.Logger;
 
 @CommandInfo(cmd = "stop", description = "Stops the bot", permission = "application.stop", aliase = {"exit", "shutdown", "end"})

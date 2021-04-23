@@ -2,7 +2,6 @@ package de.kleindev.loki;
 
 import de.kleindev.loki.config.LokiConfiguration;
 import de.kleindev.loki.managers.*;
-import de.kleindev.loki.plugin.BotPlugin;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

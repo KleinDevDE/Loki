@@ -1,7 +1,9 @@
 package de.kleindev.loki.commands.discord;
 
 import de.kleindev.loki.Loki;
-import de.kleindev.loki.commands.*;
+import de.kleindev.loki.commands.Command;
+import de.kleindev.loki.commands.CommandInfo;
+import de.kleindev.loki.commands.Response;
 import de.kleindev.loki.objects.CommandSender;
 
 import java.util.concurrent.atomic.AtomicInteger;

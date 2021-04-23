@@ -6,7 +6,6 @@ import de.kleindev.loki.Loki;
 import de.kleindev.loki.commands.AsyncCommand;
 import de.kleindev.loki.commands.Command;
 import de.kleindev.loki.events.discord.message.MessageCreatedEvent;
-import de.kleindev.loki.listeners.Async;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.objects.CommandSender;
 import de.kleindev.loki.utils.MessageTools;

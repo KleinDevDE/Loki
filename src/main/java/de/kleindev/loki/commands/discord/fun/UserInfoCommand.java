@@ -1,6 +1,8 @@
 package de.kleindev.loki.commands.discord.fun;
 
-import de.kleindev.loki.commands.*;
+import de.kleindev.loki.commands.Command;
+import de.kleindev.loki.commands.CommandInfo;
+import de.kleindev.loki.commands.Response;
 import de.kleindev.loki.objects.CommandSender;
 import org.javacord.api.entity.user.User;
 

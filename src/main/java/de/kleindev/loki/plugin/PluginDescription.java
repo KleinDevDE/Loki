@@ -3,11 +3,8 @@ package de.kleindev.loki.plugin;
 import de.kleindev.loki.utils.configuration.file.FileConfiguration;
 import de.kleindev.loki.utils.configuration.file.YamlConfiguration;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Properties;
 
 public class PluginDescription {
     private String pluginName;

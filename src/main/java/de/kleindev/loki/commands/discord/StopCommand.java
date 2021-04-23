@@ -2,7 +2,6 @@ package de.kleindev.loki.commands.discord;
 
 import de.kleindev.loki.commands.Command;
 import de.kleindev.loki.commands.CommandInfo;
-import de.kleindev.loki.commands.ConsoleCommand;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.objects.CommandSender;
 

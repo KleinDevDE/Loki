@@ -1,10 +1,10 @@
 package de.kleindev.loki.managers;
 
 import de.kleindev.loki.events.CriticalProcessTimeEvent;
+import de.kleindev.loki.events.Event;
 import de.kleindev.loki.events.EventPriority;
 import de.kleindev.loki.events.ExceptionEvent;
 import de.kleindev.loki.listeners.Async;
-import de.kleindev.loki.events.Event;
 import de.kleindev.loki.listeners.EventHandler;
 import de.kleindev.loki.listeners.Listener;
 import de.kleindev.loki.listeners.SkipListenerRegistration;

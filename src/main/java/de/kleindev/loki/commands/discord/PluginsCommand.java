@@ -7,7 +7,6 @@ import de.kleindev.loki.commands.Response;
 import de.kleindev.loki.objects.CommandSender;
 import de.kleindev.loki.plugin.BotPlugin;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 @CommandInfo(cmd = "plugins", description = "List all plugins", permission = "*")

@@ -1,7 +1,7 @@
 package de.kleindev.loki.utils;
 
-import de.kleindev.loki.Main;
 import de.kleindev.loki.Loki;
+import de.kleindev.loki.Main;
 import de.kleindev.loki.logging.LogType;
 import de.kleindev.loki.logging.Logger;
 import org.javacord.api.entity.message.embed.EmbedBuilder;

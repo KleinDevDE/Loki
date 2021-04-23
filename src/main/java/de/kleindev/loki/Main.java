@@ -16,6 +16,7 @@ import de.kleindev.loki.listeners.discord_internal.user.*;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.plugin.InternalPlugin;
 import de.kleindev.loki.utils.ApplicationManager;
+import org.apache.commons.cli.*;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.user.UserStatus;
@@ -25,8 +26,9 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Main {
-    public final static String VERSION = "1.0";
     private static String[] savedArgs;
+    private static CommandLine commandLine;
+    public final static String VERSION = "1.0";
     public static String[] getArgs() {
         return savedArgs;
     }
@@ -35,7 +37,8 @@ public class Main {
         FallbackLoggerConfiguration.setDebug(false);
         FallbackLoggerConfiguration.setTrace(false);
         savedArgs = args;
-        new Loki(new LokiConfiguration(new File("config.yml")));
+        parseArgs(args);
+        new Loki(new LokiConfiguration(new File(commandLine.getOptionValue("config", "config.yml"))));
         Logger.info("LogType: " + Loki.getInstance().getLokiConfiguration().logType);
 
         registerShutdownHook();
@@ -55,6 +58,7 @@ public class Main {
             if(ApplicationManager.shouldReboot)
                 return;
             Loki.getInstance().getEventManager().callEvent(new SupportBotShutdownEvent());
+            Loki.getInstance().getDiscordApi().disconnect();
         }));
     }
 
@@ -182,5 +186,24 @@ public class Main {
 //        } catch (SQLException e) {
 //            ExceptionHandler.handle(e);
 //        }
+    }
+
+    private static void parseArgs(String[] args){
+        Options options = new Options();
+        Option config = Option.builder()
+                .longOpt("config")
+                .hasArg(true)
+                .required(false)
+                .valueSeparator(' ')
+                .build();
+        options.addOption(config);
+
+        CommandLineParser parser = new DefaultParser();
+        try {
+            commandLine = parser.parse(options, args);
+        } catch (ParseException e) {
+            System.err.println("Commandline parsing failed. Reason: " + e.getMessage());
+        }
+
     }
 }

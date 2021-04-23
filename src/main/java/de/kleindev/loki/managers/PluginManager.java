@@ -6,7 +6,6 @@ import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.plugin.BotPlugin;
 import de.kleindev.loki.plugin.PluginDescription;
 import de.kleindev.loki.plugin.PluginLoadException;
-import de.kleindev.loki.utils.ClassPathHacker;
 import de.kleindev.loki.utils.DevTweaks;
 import lombok.SneakyThrows;
 
@@ -107,6 +106,11 @@ public class PluginManager {
 
     protected PluginEntry getPluginEntry(String pluginName){
         return pluginHashMap.getOrDefault(pluginName, new PluginEntry());
+    }
+
+    public void reloadPlugin(BotPlugin botPlugin){
+        Agent.reloadClasses(pluginHashMap.get(botPlugin.getPluginID()).packagePath);
+        botPlugin.reload();
     }
 
     private static class PluginEntry{

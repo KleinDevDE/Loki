@@ -42,7 +42,7 @@ public class Loki {
         Loki.getInstance().getDiscordApi().updateActivity(ActivityType.PLAYING, "Reloading...");
 
         Loki.getInstance().getLokiConfiguration().reload();
-        Loki.getInstance().getPluginManager().getActivePlugins().forEach(BotPlugin::reload);
+        Loki.getInstance().getPluginManager().getActivePlugins().forEach(plugin -> Loki.getInstance().getPluginManager().reloadPlugin(plugin));
         //TODO Reconnect every MySQLConnection
 
         Loki.getInstance().getDiscordApi().updateStatus(UserStatus.ONLINE);

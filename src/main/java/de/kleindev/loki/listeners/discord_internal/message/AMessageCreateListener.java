@@ -3,8 +3,10 @@ package de.kleindev.loki.listeners.discord_internal.message;
 
 import com.vdurmont.emoji.EmojiParser;
 import de.kleindev.loki.Loki;
+import de.kleindev.loki.commands.AsyncCommand;
 import de.kleindev.loki.commands.Command;
 import de.kleindev.loki.events.discord.message.MessageCreatedEvent;
+import de.kleindev.loki.listeners.Async;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.objects.CommandSender;
 import de.kleindev.loki.utils.MessageTools;
@@ -55,7 +57,15 @@ public class AMessageCreateListener implements MessageCreateListener {
 
             Logger.trace("MessageCreateEvent | execute command \""+command.getCommand()+"\" ...");
             Logger.info("Command \""+cmdString+"\" executed by \""+e.getMessage().getAuthor().getName()+"\"");
-            command.executeDiscord(new CommandSender(e.getMessage()), args);
+            if (command.getClass().isAnnotationPresent(AsyncCommand.class)){
+                Thread thread = new Thread(()->{
+                    command.executeDiscord(new CommandSender(e.getMessage()), args);
+                });
+                thread.start();
+            } else {
+                command.executeDiscord(new CommandSender(e.getMessage()), args);
+            }
+
         }
     }
 

@@ -46,9 +46,14 @@ public class MessageTools {
         messagesWhoDontNeedToBeLogged.add(message.getId());
         new Thread(() -> {
             try {
-                if(message.getChannel().getId() == 585562006023569418L)
-                    return;
                 Thread.sleep(1000*seconds);
+                message.getMessageDeleteListeners().forEach(message::removeMessageAttachableListener);
+                message.getMessageEditListeners().forEach(message::removeMessageAttachableListener);
+                message.getCachedMessagePinListeners().forEach(message::removeMessageAttachableListener);
+                message.getCachedMessageUnpinListeners().forEach(message::removeMessageAttachableListener);
+                message.getReactionAddListeners().forEach(message::removeMessageAttachableListener);
+                message.getReactionRemoveListeners().forEach(message::removeMessageAttachableListener);
+                message.getReactionRemoveAllListeners().forEach(message::removeMessageAttachableListener);
                 message.delete();
             } catch (InterruptedException e) {
                 e.printStackTrace();

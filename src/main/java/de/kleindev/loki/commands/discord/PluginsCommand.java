@@ -21,9 +21,9 @@ public class PluginsCommand extends Command {
         Response.EmbedListBuilder embedListBuilder = response.getEmbedListBuilder("Plugin (version)", "Autor");
 
         for(BotPlugin plugin : plugins){
-            embedListBuilder.addLine(plugin.getPluginDescription().getPluginName() + "("+plugin.getPluginDescription().getVersion()+")", Arrays.toString(plugin.getPluginDescription().getAuthors()));
+            embedListBuilder.addLine(plugin.getPluginDescription().getPluginName() + " ("+plugin.getPluginDescription().getVersion()+")", String.join(", "));
         }
-
+        response = embedListBuilder.build();
         response.send(false);
     }
 }

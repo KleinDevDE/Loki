@@ -1,4 +1,4 @@
-package de.kleindev.loki.commands.discord;
+package de.kleindev.loki.commands.discord.fun;
 
 import de.kleindev.loki.commands.*;
 import de.kleindev.loki.objects.CommandSender;

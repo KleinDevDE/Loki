@@ -17,7 +17,7 @@ public class RoleColorChangedEvent extends Event {
     private Server server;
     private Role role;
 
-    public RoleColorChangedEvent(RoleChangeColorEvent e){
+    public RoleColorChangedEvent(RoleChangeColorEvent e) {
         oldColor = e.getOldColor();
         newColor = e.getNewColor();
         api = e.getApi();

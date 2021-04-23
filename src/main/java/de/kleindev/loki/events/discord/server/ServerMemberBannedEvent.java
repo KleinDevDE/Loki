@@ -16,7 +16,7 @@ public class ServerMemberBannedEvent extends Event {
     private User bannedUser;
     ServerMemberBanEvent e;
 
-    public ServerMemberBannedEvent(ServerMemberBanEvent e){
+    public ServerMemberBannedEvent(ServerMemberBanEvent e) {
         this.e = e;
         api = e.getApi();
         server = e.getServer();
@@ -35,11 +35,11 @@ public class ServerMemberBannedEvent extends Event {
         return bannedUser;
     }
 
-    public Optional<Ban> getBan(){
+    public Optional<Ban> getBan() {
         return e.requestBan().join();
     }
 
-    public Optional<String> getReason(){
+    public Optional<String> getReason() {
         return e.requestReason().join();
     }
 }

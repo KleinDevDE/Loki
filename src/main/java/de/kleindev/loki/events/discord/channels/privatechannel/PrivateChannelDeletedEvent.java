@@ -12,7 +12,7 @@ public class PrivateChannelDeletedEvent extends Event {
     private PrivateChannel privateChannel;
     private User user;
 
-    public PrivateChannelDeletedEvent(PrivateChannelDeleteEvent e){
+    public PrivateChannelDeletedEvent(PrivateChannelDeleteEvent e) {
         api = e.getApi();
         user = e.getRecipient().get();
         privateChannel = e.getChannel();

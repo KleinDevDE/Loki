@@ -22,7 +22,7 @@ public class CommandsCommand extends Command {
             embedListBuilder.addLine(command.getCommand(), command.getDescription());
         });
         response = embedListBuilder.build();
-        response.setTitle("Commands ("+count+"):");
+        response.setTitle("Commands (" + count + "):");
         response.send(false);
     }
 }

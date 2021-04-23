@@ -14,7 +14,7 @@ public class ServerChannelNameChangedEvent extends Event {
     private String oldName;
     private String newName;
 
-    public ServerChannelNameChangedEvent(ServerChannelChangeNameEvent e){
+    public ServerChannelNameChangedEvent(ServerChannelChangeNameEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

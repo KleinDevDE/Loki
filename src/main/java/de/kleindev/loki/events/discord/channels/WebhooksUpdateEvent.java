@@ -18,7 +18,7 @@ public class WebhooksUpdateEvent extends Event {
     Optional<PrivateChannel> privateChannel;
     Server server;
 
-    public WebhooksUpdateEvent(org.javacord.api.event.channel.server.text.WebhooksUpdateEvent e){
+    public WebhooksUpdateEvent(org.javacord.api.event.channel.server.text.WebhooksUpdateEvent e) {
         this.api = e.getApi();
         this.server = e.getServer();
         this.serverTextChannel = e.getServerTextChannel();

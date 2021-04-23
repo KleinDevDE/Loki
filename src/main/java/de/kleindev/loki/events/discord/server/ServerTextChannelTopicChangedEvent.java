@@ -23,7 +23,7 @@ public class ServerTextChannelTopicChangedEvent extends Event {
     private String newTopic;
 
 
-    public ServerTextChannelTopicChangedEvent(ServerTextChannelChangeTopicEvent e){
+    public ServerTextChannelTopicChangedEvent(ServerTextChannelChangeTopicEvent e) {
         api = e.getApi();
         server = e.getServer();
         channel = e.getChannel();

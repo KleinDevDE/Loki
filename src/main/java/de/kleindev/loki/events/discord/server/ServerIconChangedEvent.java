@@ -15,7 +15,7 @@ public class ServerIconChangedEvent extends Event {
     private Optional<Icon> oldIcon;
     private Optional<Icon> newIcon;
 
-    public ServerIconChangedEvent(ServerChangeIconEvent e){
+    public ServerIconChangedEvent(ServerChangeIconEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldIcon = e.getOldIcon();

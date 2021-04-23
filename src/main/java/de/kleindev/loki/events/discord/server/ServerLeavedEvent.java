@@ -10,7 +10,7 @@ public class ServerLeavedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public ServerLeavedEvent(ServerLeaveEvent e){
+    public ServerLeavedEvent(ServerLeaveEvent e) {
         api = e.getApi();
         server = e.getServer();
     }

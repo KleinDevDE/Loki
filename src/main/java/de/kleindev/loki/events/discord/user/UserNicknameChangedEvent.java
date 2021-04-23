@@ -10,38 +10,38 @@ import java.util.Optional;
 
 
 public class UserNicknameChangedEvent extends Event {
-	private Optional<String> newNickname;
-	private Server server;
-	private Optional<String> oldNickname;
-	private DiscordApi api;
-	private User user;
+    private Optional<String> newNickname;
+    private Server server;
+    private Optional<String> oldNickname;
+    private DiscordApi api;
+    private User user;
 
-	public UserNicknameChangedEvent(UserChangeNicknameEvent javaCordEvent) {
-		this.newNickname = javaCordEvent.getNewNickname();
-		this.server = javaCordEvent.getServer();
-		this.oldNickname = javaCordEvent.getOldNickname();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser();
-	}
+    public UserNicknameChangedEvent(UserChangeNicknameEvent javaCordEvent) {
+        this.newNickname = javaCordEvent.getNewNickname();
+        this.server = javaCordEvent.getServer();
+        this.oldNickname = javaCordEvent.getOldNickname();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Optional<String> getNewNickname() {
-		return newNickname;
-	}
+    public Optional<String> getNewNickname() {
+        return newNickname;
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public Optional<String> getOldNickname() {
-		return oldNickname;
-	}
+    public Optional<String> getOldNickname() {
+        return oldNickname;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

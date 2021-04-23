@@ -10,32 +10,32 @@ import java.util.Set;
 
 
 public class UserActivityChangedEvent extends Event {
-	private Set<Activity> oldActivities;
-	private Set<Activity> newActivities;
-	private DiscordApi api;
-	private User user;
+    private Set<Activity> oldActivities;
+    private Set<Activity> newActivities;
+    private DiscordApi api;
+    private User user;
 
-	public UserActivityChangedEvent(UserChangeActivityEvent javaCordEvent) {
-		this.oldActivities = javaCordEvent.getOldActivities();
-		this.newActivities = javaCordEvent.getNewActivities();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser().get();
-	}
+    public UserActivityChangedEvent(UserChangeActivityEvent javaCordEvent) {
+        this.oldActivities = javaCordEvent.getOldActivities();
+        this.newActivities = javaCordEvent.getNewActivities();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser().get();
+    }
 
-	public Set<Activity> getNewActivities() {
-		return newActivities;
-	}
+    public Set<Activity> getNewActivities() {
+        return newActivities;
+    }
 
-	public Set<Activity> getOldActivities() {
-		return oldActivities;
-	}
+    public Set<Activity> getOldActivities() {
+        return oldActivities;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

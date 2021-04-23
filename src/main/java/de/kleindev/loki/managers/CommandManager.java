@@ -255,11 +255,15 @@ public class CommandManager {
     }
 
     public Stream<Command> getCommands() {
-        return commandHashMap.values().parallelStream().map((a) -> {return a.command;});
+        return commandHashMap.values().parallelStream().map((a) -> {
+            return a.command;
+        });
     }
 
     public Stream<ConsoleCommand> getConsoleCommands() {
-        return consoleCommandHashMap.values().parallelStream().map((a) -> {return a.command;});
+        return consoleCommandHashMap.values().parallelStream().map((a) -> {
+            return a.command;
+        });
     }
 
     @SneakyThrows

@@ -12,7 +12,7 @@ public class PrivateChannelCreatedEvent extends Event {
     private TextChannel textChannel;
     private User user;
 
-    public PrivateChannelCreatedEvent(PrivateChannelCreateEvent e){
+    public PrivateChannelCreatedEvent(PrivateChannelCreateEvent e) {
         api = e.getApi();
         textChannel = e.getChannel();
         user = e.getRecipient().get();

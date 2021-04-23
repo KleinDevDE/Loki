@@ -6,13 +6,13 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
 public class PermissionManager {
-    public boolean hasPermission(Server server, User user, String permission){
-        if (permission.equals("*")){
+    public boolean hasPermission(Server server, User user, String permission) {
+        if (permission.equals("*")) {
             return true;
         }
 
-        for(Role role : user.getRoles(server)){
-            if (role.getPermissions().getAllowedPermission().contains(PermissionType.ADMINISTRATOR)){
+        for (Role role : user.getRoles(server)) {
+            if (role.getPermissions().getAllowedPermission().contains(PermissionType.ADMINISTRATOR)) {
                 return true;
             }
         }
@@ -20,15 +20,15 @@ public class PermissionManager {
         return false;
     }
 
-    public void givePermission(Server server, User user, String permission){
+    public void givePermission(Server server, User user, String permission) {
 
     }
 
-    public void setGlobalPermission(User user, String permission){
+    public void setGlobalPermission(User user, String permission) {
 
     }
 
-    public void listPermissions(Server server, User user){
+    public void listPermissions(Server server, User user) {
 
     }
 }

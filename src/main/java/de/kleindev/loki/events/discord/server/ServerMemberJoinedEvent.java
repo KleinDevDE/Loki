@@ -12,7 +12,7 @@ public class ServerMemberJoinedEvent extends Event {
     private Server server;
     private User user;
 
-    public ServerMemberJoinedEvent(ServerMemberJoinEvent e){
+    public ServerMemberJoinedEvent(ServerMemberJoinEvent e) {
         api = e.getApi();
         server = e.getServer();
         user = e.getUser();

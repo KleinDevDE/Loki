@@ -21,7 +21,7 @@ public class ServerChannelPositionChangedEvent extends Event {
     private int newPosition;
     private int newRAWPosition;
 
-    public ServerChannelPositionChangedEvent(ServerChannelChangePositionEvent e){
+    public ServerChannelPositionChangedEvent(ServerChannelChangePositionEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

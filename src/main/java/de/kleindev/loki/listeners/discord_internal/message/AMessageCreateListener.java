@@ -27,7 +27,7 @@ public class AMessageCreateListener implements MessageCreateListener {
         if (e.getMessageAuthor().isBotUser() || e.getMessageAuthor().isWebhook() || e.getMessageAuthor().isYourself())
             return;
 
-        if (shouldReact(e.getMessage())){
+        if (shouldReact(e.getMessage())) {
             String message = getCleanMessage(e.getMessageContent());
             Logger.trace("MessageCreateEvent | message -> " + message);
             String[] messageSplitted = message.split(" ");
@@ -43,22 +43,22 @@ public class AMessageCreateListener implements MessageCreateListener {
             Logger.trace("MessageCreateEvent | cmdString -> " + cmdString);
 
             Command command = Loki.getInstance().getCommandManager().getCommand(cmdString);
-            if (command == null){
+            if (command == null) {
                 Logger.trace("MessageCreateEvent | command is NULL");
                 sendCommandNotFound(e.getChannel(), e.getMessageContent());
                 return;
             }
 
-            if (!Loki.getInstance().getPermissionManager().hasPermission(e.getServer().get(), e.getMessageAuthor().asUser().get(), command.getPermission())){
+            if (!Loki.getInstance().getPermissionManager().hasPermission(e.getServer().get(), e.getMessageAuthor().asUser().get(), command.getPermission())) {
                 Logger.trace("MessageCreateEvent | user has no permisision");
                 sendNoPermission(e.getChannel(), e.getMessageContent());
                 return;
             }
 
-            Logger.trace("MessageCreateEvent | execute command \""+command.getCommand()+"\" ...");
-            Logger.info("Command \""+cmdString+"\" executed by \""+e.getMessage().getAuthor().getName()+"\"");
-            if (command.getClass().isAnnotationPresent(AsyncCommand.class)){
-                Thread thread = new Thread(()->{
+            Logger.trace("MessageCreateEvent | execute command \"" + command.getCommand() + "\" ...");
+            Logger.info("Command \"" + cmdString + "\" executed by \"" + e.getMessage().getAuthor().getName() + "\"");
+            if (command.getClass().isAnnotationPresent(AsyncCommand.class)) {
+                Thread thread = new Thread(() -> {
                     command.executeDiscord(new CommandSender(e.getMessage()), args);
                 });
                 thread.start();
@@ -69,35 +69,35 @@ public class AMessageCreateListener implements MessageCreateListener {
         }
     }
 
-    private void sendCommandNotFound(TextChannel textChannel, String command){
+    private void sendCommandNotFound(TextChannel textChannel, String command) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.GRAY);
         embedBuilder.setAuthor(Loki.getInstance().getDiscordApi().getYourself());
         embedBuilder.setTimestampToNow();
-        if (command.length() > 15){
-            command = command.substring(0, 15)+"...";
+        if (command.length() > 15) {
+            command = command.substring(0, 15) + "...";
         }
-        embedBuilder.setDescription("**"+command+"**\nIch kenne diesen Befehl nicht.. " + EmojiParser.parseToUnicode(":face_with_monocle:"));
+        embedBuilder.setDescription("**" + command + "**\nIch kenne diesen Befehl nicht.. " + EmojiParser.parseToUnicode(":face_with_monocle:"));
         MessageTools.deleteMessageLater(textChannel.sendMessage(embedBuilder).join(), 5);
     }
 
-    private void sendNoPermission(TextChannel textChannel, String command){
+    private void sendNoPermission(TextChannel textChannel, String command) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.RED);
         embedBuilder.setAuthor(Loki.getInstance().getDiscordApi().getYourself());
         embedBuilder.setTimestampToNow();
-        if (command.length() > 15){
-            command = command.substring(0, 15)+"...";
+        if (command.length() > 15) {
+            command = command.substring(0, 15) + "...";
         }
-        embedBuilder.setDescription("**"+command+"**\nDu hast keine Rechte für diesen Befehl! " + EmojiParser.parseToUnicode(":no_entry:"));
+        embedBuilder.setDescription("**" + command + "**\nDu hast keine Rechte für diesen Befehl! " + EmojiParser.parseToUnicode(":no_entry:"));
         MessageTools.deleteMessageLater(textChannel.sendMessage(embedBuilder).join(), 5);
     }
 
-    private boolean shouldReact(Message message){
-        if (!Loki.getInstance().getLokiConfiguration().commandPrefix.equals("") && message.getContent().startsWith(Loki.getInstance().getLokiConfiguration().commandPrefix)){
+    private boolean shouldReact(Message message) {
+        if (!Loki.getInstance().getLokiConfiguration().commandPrefix.equals("") && message.getContent().startsWith(Loki.getInstance().getLokiConfiguration().commandPrefix)) {
             Logger.trace("MessageCreateEvent | Starts with command prefix");
             return true;
-        } else if (startsWithMentionOfBot(message.getContent())){
+        } else if (startsWithMentionOfBot(message.getContent())) {
             Logger.trace("MessageCreateEvent | Starts with mention of bot");
             return true;
         }
@@ -105,11 +105,11 @@ public class AMessageCreateListener implements MessageCreateListener {
         return false;
     }
 
-    private boolean startsWithMentionOfBot(String string){
+    private boolean startsWithMentionOfBot(String string) {
         return string.startsWith(Loki.getInstance().getDiscordApi().getYourself().getMentionTag()) || string.startsWith(Loki.getInstance().getDiscordApi().getYourself().getNicknameMentionTag());
     }
 
-    private String getCleanMessage(String string){
+    private String getCleanMessage(String string) {
         return string
                 .replace(Loki.getInstance().getDiscordApi().getYourself().getMentionTag(), "")
                 .replace(Loki.getInstance().getDiscordApi().getYourself().getNicknameMentionTag(), "")

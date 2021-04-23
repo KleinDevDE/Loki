@@ -19,6 +19,7 @@ public class ApplicationManager {
 
     /**
      * Restart the current Java application
+     *
      * @param runBeforeRestart some custom code to be run before restarting
      * @throws IOException
      */
@@ -35,7 +36,7 @@ public class ApplicationManager {
                     vmArgsOneLine.append(" ");
                 }
             }
-            final StringBuffer cmd = new StringBuffer(java + " "+ vmArgsOneLine);
+            final StringBuffer cmd = new StringBuffer(java + " " + vmArgsOneLine);
 
             String[] mainCommand = System.getProperty(SUN_JAVA_COMMAND).split(" ");
             if (mainCommand[0].endsWith(".jar")) {
@@ -57,7 +58,7 @@ public class ApplicationManager {
                     }
                 }
             });
-            if (runBeforeRestart!= null) {
+            if (runBeforeRestart != null) {
                 runBeforeRestart.run();
             }
 

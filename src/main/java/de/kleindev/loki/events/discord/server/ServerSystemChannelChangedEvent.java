@@ -16,7 +16,7 @@ public class ServerSystemChannelChangedEvent extends Event {
     private Optional<ServerTextChannel> newSystemChannel;
 
 
-    public ServerSystemChannelChangedEvent(ServerChangeSystemChannelEvent e){
+    public ServerSystemChannelChangedEvent(ServerChangeSystemChannelEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldSystemChannel = e.getOldSystemChannel();

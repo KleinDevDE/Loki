@@ -9,7 +9,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface CommandInfo {
     String cmd();
+
     String permission() default "*";
+
     String[] aliase() default {};
+
     String description();
 }

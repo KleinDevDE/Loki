@@ -14,7 +14,7 @@ public class RolePositionChangedEvent extends Event {
     private int oldPosition;
     private int newPosition;
 
-    public RolePositionChangedEvent(RoleChangePositionEvent e){
+    public RolePositionChangedEvent(RoleChangePositionEvent e) {
         api = e.getApi();
         role = e.getRole();
         oldPosition = e.getOldPosition();

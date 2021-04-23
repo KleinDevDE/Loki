@@ -170,7 +170,7 @@ public class YamlConfiguration extends FileConfiguration {
      * @throws IllegalArgumentException Thrown if file is null
      */
     public static YamlConfiguration loadConfiguration(File file) {
-        if(file == null){
+        if (file == null) {
             System.out.println("YamlConfiguration.java:176 --> File cannot be null!");
             return null;
         }
@@ -202,7 +202,7 @@ public class YamlConfiguration extends FileConfiguration {
      * @throws IllegalArgumentException Thrown if stream is null
      */
     public static YamlConfiguration loadConfiguration(Reader reader) {
-        if(reader == null){
+        if (reader == null) {
             System.out.println("YamlConfiguration.java:208 --> Reader cannot be null!");
             return null;
         }

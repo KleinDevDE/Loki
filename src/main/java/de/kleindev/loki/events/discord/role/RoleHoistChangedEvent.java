@@ -14,7 +14,7 @@ public class RoleHoistChangedEvent extends Event {
     private Role role;
     private Server server;
 
-    public RoleHoistChangedEvent(RoleChangeHoistEvent e){
+    public RoleHoistChangedEvent(RoleChangeHoistEvent e) {
         newHoist = e.getNewHoist();
         oldHoist = e.getOldHoist();
         role = e.getRole();

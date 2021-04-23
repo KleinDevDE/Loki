@@ -9,32 +9,32 @@ import org.javacord.api.event.server.role.UserRoleRemoveEvent;
 
 
 public class UserRoleRemovedEvent extends Event {
-	private Server server;
-	private Role role;
-	private DiscordApi api;
-	private User user;
+    private Server server;
+    private Role role;
+    private DiscordApi api;
+    private User user;
 
-	public UserRoleRemovedEvent(UserRoleRemoveEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.role = javaCordEvent.getRole();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser();
-	}
+    public UserRoleRemovedEvent(UserRoleRemoveEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.role = javaCordEvent.getRole();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

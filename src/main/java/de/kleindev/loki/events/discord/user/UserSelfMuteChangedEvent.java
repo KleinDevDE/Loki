@@ -8,26 +8,26 @@ import org.javacord.api.event.user.UserChangeSelfMutedEvent;
 
 
 public class UserSelfMuteChangedEvent extends Event {
-	private Server server;
-	private DiscordApi api;
-	private User user;
+    private Server server;
+    private DiscordApi api;
+    private User user;
 
-	public UserSelfMuteChangedEvent(UserChangeSelfMutedEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser();
-	}
+    public UserSelfMuteChangedEvent(UserChangeSelfMutedEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

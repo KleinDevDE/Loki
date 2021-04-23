@@ -15,7 +15,7 @@ public class ServerAFKChannelChangedEvent extends Event {
     private Optional<ServerVoiceChannel> oldAFKChannel;
     private Optional<ServerVoiceChannel> newAFKChannel;
 
-    public ServerAFKChannelChangedEvent(ServerChangeAfkChannelEvent e){
+    public ServerAFKChannelChangedEvent(ServerChangeAfkChannelEvent e) {
         oldAFKChannel = e.getOldAfkChannel();
         newAFKChannel = e.getNewAfkChannel();
         api = e.getApi();

@@ -42,53 +42,53 @@ public class Response {
         initBuilder(message.getAuthor().getDisplayName());
     }
 
-    public Response(CommandSender commandSender){
+    public Response(CommandSender commandSender) {
         this.channel = commandSender.getTextChannel();
         this.message = commandSender.getMessage();
         initBuilder(commandSender.getUser().getName());
     }
 
-    public Response setTitle(String title){
+    public Response setTitle(String title) {
         embedBuilder.setTitle(title);
         return this;
     }
 
-    public Response setText(String message){
+    public Response setText(String message) {
         embedBuilder.setDescription(message);
         return this;
     }
 
-    public Response addField(String key, String value, boolean inline){
+    public Response addField(String key, String value, boolean inline) {
         embedBuilder.addField(key, value, inline);
         return this;
     }
 
-    public Response setThumbnail(String url){
+    public Response setThumbnail(String url) {
         embedBuilder.setThumbnail(url);
         return this;
     }
 
-    public Response setThumbnail(Icon icon){
+    public Response setThumbnail(Icon icon) {
         embedBuilder.setThumbnail(icon);
         return this;
     }
 
-    public Response setThumbnail(BufferedImage bufferedImage){
+    public Response setThumbnail(BufferedImage bufferedImage) {
         embedBuilder.setThumbnail(bufferedImage);
         return this;
     }
 
-    public Response setThumbnail(byte[] bytes){
+    public Response setThumbnail(byte[] bytes) {
         embedBuilder.setThumbnail(bytes);
         return this;
     }
 
-    public Response setColor(Color color){
+    public Response setColor(Color color) {
         embedBuilder.setColor(color);
         return this;
     }
 
-    public EmbedListBuilder getEmbedListBuilder(String title_left, String title_right){
+    public EmbedListBuilder getEmbedListBuilder(String title_left, String title_right) {
         return new EmbedListBuilder(this, embedBuilder, title_left, title_right);
     }
 
@@ -133,10 +133,10 @@ public class Response {
                 Logger.log(LogType.TRACE, "Response.java -- loop next round");
             }
 
-            if (reactionAddListener != null){
+            if (reactionAddListener != null) {
                 Logger.log(LogType.TRACE, "Response.java -- addReactionAddListener");
                 msg.addReactionAddListener(event -> {
-                    if (event.getReaction().isEmpty() || (event.getReaction().get().getUsers().join().size() == 1 && event.getReaction().get().containsYou())){
+                    if (event.getReaction().isEmpty() || (event.getReaction().get().getUsers().join().size() == 1 && event.getReaction().get().containsYou())) {
                         return;
                     }
                     reactionAddListener.onReactionAdd(event);
@@ -152,9 +152,9 @@ public class Response {
         return msg;
     }
 
-    private void initBuilder(String author){
+    private void initBuilder(String author) {
         embedBuilder.setColor(Color.CYAN);
-        embedBuilder.setFooter("~ Executed by "+author);
+        embedBuilder.setFooter("~ Executed by " + author);
         embedBuilder.setThumbnail(Loki.getInstance().getDiscordApi().getYourself().getAvatar());
     }
 
@@ -175,8 +175,7 @@ public class Response {
         }
 
         /**
-         *
-         * @param left Maximum 50 chars
+         * @param left  Maximum 50 chars
          * @param right Maximum 50 chars
          * @return
          */
@@ -189,7 +188,7 @@ public class Response {
         public Response build() {
             StringBuilder stringBuilder_left = new StringBuilder();
             StringBuilder stringBuilder_right = new StringBuilder();
-            for (int count = 0; count <= left.size()-1; count++) {
+            for (int count = 0; count <= left.size() - 1; count++) {
                 stringBuilder_left.append("\n").append(left.get(count));
                 stringBuilder_right.append("\n").append(right.get(count));
             }

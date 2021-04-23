@@ -12,7 +12,7 @@ public class CustomEmojiCreatedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public CustomEmojiCreatedEvent(KnownCustomEmojiCreateEvent e){
+    public CustomEmojiCreatedEvent(KnownCustomEmojiCreateEvent e) {
         knownCustomEmoji = e.getEmoji();
         api = e.getApi();
         server = e.getServer();

@@ -11,38 +11,38 @@ import java.util.Optional;
 
 
 public class VoiceChannelMemberLeavedEvent extends Event {
-	private Server server;
-	private ServerVoiceChannel channel;
-	private DiscordApi api;
-	private Optional newChannel;
-	private User user;
+    private Server server;
+    private ServerVoiceChannel channel;
+    private DiscordApi api;
+    private Optional newChannel;
+    private User user;
 
-	public VoiceChannelMemberLeavedEvent(ServerVoiceChannelMemberLeaveEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.channel = javaCordEvent.getChannel();
-		this.api = javaCordEvent.getApi();
-		this.newChannel = javaCordEvent.getNewChannel();
-		this.user = javaCordEvent.getUser();
-	}
+    public VoiceChannelMemberLeavedEvent(ServerVoiceChannelMemberLeaveEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.channel = javaCordEvent.getChannel();
+        this.api = javaCordEvent.getApi();
+        this.newChannel = javaCordEvent.getNewChannel();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public ServerVoiceChannel getChannel() {
-		return channel;
-	}
+    public ServerVoiceChannel getChannel() {
+        return channel;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public Optional getNewChannel() {
-		return newChannel;
-	}
+    public Optional getNewChannel() {
+        return newChannel;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

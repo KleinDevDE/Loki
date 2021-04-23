@@ -14,7 +14,7 @@ public class RoleMentionableChangedEvent extends Event {
     private Role role;
     private Server server;
 
-    public RoleMentionableChangedEvent(RoleChangeMentionableEvent e){
+    public RoleMentionableChangedEvent(RoleChangeMentionableEvent e) {
         newMentionableFlag = e.getNewMentionableFlag();
         oldMentionableFlag = e.getOldMentionableFlag();
         role = e.getRole();

@@ -12,7 +12,7 @@ public class ServerMemberUnbannedEvent extends Event {
     private Server server;
     private User user;
 
-    public ServerMemberUnbannedEvent(ServerMemberUnbanEvent e){
+    public ServerMemberUnbannedEvent(ServerMemberUnbanEvent e) {
         api = e.getApi();
         server = e.getServer();
         user = e.getUser();

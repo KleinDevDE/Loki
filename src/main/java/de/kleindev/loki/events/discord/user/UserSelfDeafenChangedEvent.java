@@ -8,26 +8,26 @@ import org.javacord.api.event.user.UserChangeSelfDeafenedEvent;
 
 
 public class UserSelfDeafenChangedEvent extends Event {
-	private Server server;
-	private DiscordApi api;
-	private User user;
+    private Server server;
+    private DiscordApi api;
+    private User user;
 
-	public UserSelfDeafenChangedEvent(UserChangeSelfDeafenedEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser();
-	}
+    public UserSelfDeafenChangedEvent(UserChangeSelfDeafenedEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

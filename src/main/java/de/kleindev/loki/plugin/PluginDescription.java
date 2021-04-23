@@ -15,34 +15,34 @@ public class PluginDescription {
     private String[] authors;
     private String main;
 
-    public PluginDescription(InputStream pluginYMLFile){
+    public PluginDescription(InputStream pluginYMLFile) {
         FileConfiguration configuration = YamlConfiguration.loadConfiguration(new InputStreamReader(pluginYMLFile));
         load(configuration);
     }
 
-    public PluginDescription(FileConfiguration configuration){
+    public PluginDescription(FileConfiguration configuration) {
         load(configuration);
     }
 
-    private void load(FileConfiguration configuration){
+    private void load(FileConfiguration configuration) {
         try {
-            if(configuration.get("name") == null)
+            if (configuration.get("name") == null)
                 throw new PluginLoadException("plugin.yml file doesn't contain \"name\"");
-            if(configuration.get("version") == null)
+            if (configuration.get("version") == null)
                 throw new PluginLoadException("plugin.yml file doesn't contain \"version\"");
-            if(configuration.get("authors") == null && configuration.get("author") == null)
+            if (configuration.get("authors") == null && configuration.get("author") == null)
                 throw new PluginLoadException("plugin.yml file doesn't contain \"authors\"");
-            if(configuration.get("main") == null)
+            if (configuration.get("main") == null)
                 throw new PluginLoadException("plugin.yml file doesn't contain \"main\"");
             pluginName = configuration.getString("name");
             version = configuration.getString("version");
-            if (configuration.get("authors") == null){
+            if (configuration.get("authors") == null) {
                 authors = new String[]{configuration.getString("author")};
             } else {
                 authors = configuration.getString("authors").replace(" ", "").split(",");
             }
             main = configuration.getString("main");
-        }catch (PluginLoadException e) {
+        } catch (PluginLoadException e) {
             Thread.currentThread().getUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
         }
     }

@@ -13,7 +13,7 @@ public class ServerVerificationLevelChangedEvent extends Event {
     private VerificationLevel oldVerificationLevel;
     private VerificationLevel newVerificationLevel;
 
-    public ServerVerificationLevelChangedEvent(ServerChangeVerificationLevelEvent e){
+    public ServerVerificationLevelChangedEvent(ServerChangeVerificationLevelEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldVerificationLevel = e.getOldVerificationLevel();

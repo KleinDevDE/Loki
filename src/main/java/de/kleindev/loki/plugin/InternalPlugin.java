@@ -21,7 +21,7 @@ public class InternalPlugin extends BotPlugin {
 
     }
 
-    public InternalPlugin(){
+    public InternalPlugin() {
         FileConfiguration fileConfiguration = new YamlConfiguration();
         fileConfiguration.set("name", "Internal");
         fileConfiguration.set("version", Main.VERSION);

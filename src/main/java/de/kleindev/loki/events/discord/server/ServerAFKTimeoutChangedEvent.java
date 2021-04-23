@@ -12,7 +12,7 @@ public class ServerAFKTimeoutChangedEvent extends Event {
     private int newAfkTimeoutInSeconds;
     private int oldAfkTimeoutInSeconds;
 
-    public ServerAFKTimeoutChangedEvent(ServerChangeAfkTimeoutEvent e){
+    public ServerAFKTimeoutChangedEvent(ServerChangeAfkTimeoutEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldAfkTimeoutInSeconds = e.getOldAfkTimeoutInSeconds();

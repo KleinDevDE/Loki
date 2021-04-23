@@ -18,7 +18,7 @@ public class GroupChannelCreatedEvent extends Event {
     private Optional<PrivateChannel> privateChannel;
     private Optional<ServerTextChannel> serverTextChannel;
 
-    public GroupChannelCreatedEvent(GroupChannelCreateEvent e){
+    public GroupChannelCreatedEvent(GroupChannelCreateEvent e) {
         api = e.getApi();
         textChannel = e.getChannel();
         groupChannel = e.getGroupChannel();

@@ -5,7 +5,7 @@ import java.io.File;
 public class LokiConfiguration extends Config {
     private File file;
 
-    public LokiConfiguration(File file){
+    public LokiConfiguration(File file) {
         this.file = file;
         load();
     }

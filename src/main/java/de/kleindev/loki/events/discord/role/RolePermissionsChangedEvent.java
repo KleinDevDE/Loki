@@ -15,7 +15,7 @@ public class RolePermissionsChangedEvent extends Event {
     private Role role;
     private Server server;
 
-    public RolePermissionsChangedEvent(RoleChangePermissionsEvent e){
+    public RolePermissionsChangedEvent(RoleChangePermissionsEvent e) {
         newPermissions = e.getNewPermissions();
         oldPermissions = e.getOldPermissions();
         role = e.getRole();

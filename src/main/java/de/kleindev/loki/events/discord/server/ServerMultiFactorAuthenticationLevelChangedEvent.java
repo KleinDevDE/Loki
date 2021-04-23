@@ -13,7 +13,7 @@ public class ServerMultiFactorAuthenticationLevelChangedEvent extends Event {
     private MultiFactorAuthenticationLevel oldMultiFactorAuthenticationLevel;
     private MultiFactorAuthenticationLevel newMultiFactorAuthenticationLevel;
 
-    public ServerMultiFactorAuthenticationLevelChangedEvent(ServerChangeMultiFactorAuthenticationLevelEvent e){
+    public ServerMultiFactorAuthenticationLevelChangedEvent(ServerChangeMultiFactorAuthenticationLevelEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldMultiFactorAuthenticationLevel = e.getOldMultiFactorAuthenticationLevel();

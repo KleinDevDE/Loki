@@ -9,7 +9,7 @@ public class ServerBecomesUnavailableEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public ServerBecomesUnavailableEvent(org.javacord.api.event.server.ServerBecomesUnavailableEvent e){
+    public ServerBecomesUnavailableEvent(org.javacord.api.event.server.ServerBecomesUnavailableEvent e) {
         api = e.getApi();
         server = e.getServer();
     }

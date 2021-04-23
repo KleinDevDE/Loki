@@ -13,7 +13,7 @@ public class ServerExplicitContentFilterLevelChangedEvent extends Event {
     private ExplicitContentFilterLevel oldExplicitContentFilterLevel;
     private ExplicitContentFilterLevel newExplicitContentFilterLevel;
 
-    public ServerExplicitContentFilterLevelChangedEvent(ServerChangeExplicitContentFilterLevelEvent e){
+    public ServerExplicitContentFilterLevelChangedEvent(ServerChangeExplicitContentFilterLevelEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldExplicitContentFilterLevel = e.getOldExplicitContentFilterLevel();

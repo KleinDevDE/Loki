@@ -18,7 +18,7 @@ public class GroupChannelDeletedEvent extends Event {
     private Optional<PrivateChannel> privateChannel;
     private Optional<ServerTextChannel> serverTextChannel;
 
-    public GroupChannelDeletedEvent(GroupChannelDeleteEvent e){
+    public GroupChannelDeletedEvent(GroupChannelDeleteEvent e) {
         api = e.getApi();
         textChannel = e.getChannel();
         groupChannel = e.getGroupChannel();

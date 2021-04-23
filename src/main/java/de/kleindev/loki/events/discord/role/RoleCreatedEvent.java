@@ -12,7 +12,7 @@ public class RoleCreatedEvent extends Event {
     private Server server;
     private Role role;
 
-    public RoleCreatedEvent(RoleCreateEvent e){
+    public RoleCreatedEvent(RoleCreateEvent e) {
         api = e.getApi();
         server = e.getServer();
         role = e.getRole();

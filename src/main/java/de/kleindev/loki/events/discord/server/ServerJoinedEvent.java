@@ -10,7 +10,7 @@ public class ServerJoinedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public ServerJoinedEvent(ServerJoinEvent e){
+    public ServerJoinedEvent(ServerJoinEvent e) {
         api = e.getApi();
         server = e.getServer();
     }

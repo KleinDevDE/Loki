@@ -26,8 +26,8 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
         handle(e);
     }
 
-    public static void handle(Throwable e){
-        
+    public static void handle(Throwable e) {
+
         //If there are 10+ exceptions in 3 seconds, the bot will reboot
         // If the reboot failed, bot will shutdown
         count++;
@@ -41,7 +41,6 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
             lastException = System.currentTimeMillis();
             count = 0;
         }
-        
 
 
         // Skip if last Stacktrace is the same
@@ -94,6 +93,6 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 
             Loki.getInstance().getDiscordApi().getUserById(221313993321480192L).join().sendMessage(embedBuilder);
         }
-        
+
     }
 }

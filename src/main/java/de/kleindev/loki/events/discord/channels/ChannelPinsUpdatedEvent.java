@@ -20,7 +20,7 @@ public class ChannelPinsUpdatedEvent extends Event {
     private Optional<PrivateChannel> privateChannel;
     private Optional<ServerTextChannel> serverTextChannel;
 
-    public ChannelPinsUpdatedEvent(ChannelPinsUpdateEvent e){
+    public ChannelPinsUpdatedEvent(ChannelPinsUpdateEvent e) {
         lastPinTimestamp = e.getLastPinTimestamp();
         api = e.getApi();
         textChannel = e.getChannel();

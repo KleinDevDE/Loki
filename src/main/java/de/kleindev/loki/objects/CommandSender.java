@@ -15,49 +15,51 @@ public class CommandSender {
     private Message message;
     private Server server;
 
-    public CommandSender(Message message){
+    public CommandSender(Message message) {
         this.user = message.getUserAuthor().get();
         this.textChannel = message.getChannel();
         this.message = message;
         this.server = message.getServer().get();
     }
 
-    public void sendMessageToChannel(String message, int deleteAfterSeconds){
+    public void sendMessageToChannel(String message, int deleteAfterSeconds) {
         MessageTools.deleteMessageLater(textChannel.sendMessage(message).join(), deleteAfterSeconds);
     }
-    public void sendMessageToChannel(String message){
+
+    public void sendMessageToChannel(String message) {
         textChannel.sendMessage(message);
     }
 
-    public void sendMessageToChannel(EmbedBuilder embedBuilder, int deleteAfterSeconds){
+    public void sendMessageToChannel(EmbedBuilder embedBuilder, int deleteAfterSeconds) {
         MessageTools.deleteMessageLater(textChannel.sendMessage(embedBuilder).join(), deleteAfterSeconds);
     }
-    public void sendMessageToChannel(EmbedBuilder embedBuilder){
+
+    public void sendMessageToChannel(EmbedBuilder embedBuilder) {
         textChannel.sendMessage(embedBuilder);
     }
 
 
-    public void sendPrivateMessage(String message){
-        if (user.getPrivateChannel().isPresent()){
+    public void sendPrivateMessage(String message) {
+        if (user.getPrivateChannel().isPresent()) {
             user.getPrivateChannel().get().sendMessage(message);
         } else {
             user.openPrivateChannel().join().sendMessage(message);
         }
     }
 
-    public void sendPrivateMessage(EmbedBuilder embedBuilder){
-        if (user.getPrivateChannel().isPresent()){
+    public void sendPrivateMessage(EmbedBuilder embedBuilder) {
+        if (user.getPrivateChannel().isPresent()) {
             user.getPrivateChannel().get().sendMessage(embedBuilder);
         } else {
             user.openPrivateChannel().join().sendMessage(embedBuilder);
         }
     }
 
-    public void deleteCommandMessage(){
+    public void deleteCommandMessage() {
         this.message.delete();
     }
 
-    public void deleteCommandMessageLater(int seconds){
+    public void deleteCommandMessageLater(int seconds) {
         MessageTools.deleteMessageLater(this.message, seconds);
     }
 }

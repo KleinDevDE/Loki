@@ -7,7 +7,7 @@ import de.kleindev.loki.listeners.Listener;
 public class ServerUserJoinedEventListener implements Listener {
 
     @EventHandler
-    public void onUserJoin(ServerMemberJoinedEvent e){
+    public void onUserJoin(ServerMemberJoinedEvent e) {
 
     }
 }

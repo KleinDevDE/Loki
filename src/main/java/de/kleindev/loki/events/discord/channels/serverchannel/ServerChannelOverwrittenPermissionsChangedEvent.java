@@ -23,7 +23,7 @@ public class ServerChannelOverwrittenPermissionsChangedEvent extends Event {
     private Optional<User> user;
     private Optional<DiscordEntity> entity;
 
-    public ServerChannelOverwrittenPermissionsChangedEvent(ServerChannelChangeOverwrittenPermissionsEvent e){
+    public ServerChannelOverwrittenPermissionsChangedEvent(ServerChannelChangeOverwrittenPermissionsEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

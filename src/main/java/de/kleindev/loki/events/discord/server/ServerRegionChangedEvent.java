@@ -13,7 +13,7 @@ public class ServerRegionChangedEvent extends Event {
     private Region oldRegion;
     private Region newRegion;
 
-    public ServerRegionChangedEvent(ServerChangeRegionEvent e){
+    public ServerRegionChangedEvent(ServerChangeRegionEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldRegion = e.getOldRegion();

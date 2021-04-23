@@ -14,7 +14,7 @@ public class ServerChannelNSFWFlagChangedEvent extends Event {
     private boolean oldNSFWFlag;
     private boolean newNSFWFlag;
 
-    public ServerChannelNSFWFlagChangedEvent(ServerChannelChangeNsfwFlagEvent e){
+    public ServerChannelNSFWFlagChangedEvent(ServerChannelChangeNsfwFlagEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

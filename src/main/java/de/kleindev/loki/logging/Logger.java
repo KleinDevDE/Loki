@@ -46,41 +46,63 @@ public class Logger {
         }
     }
 
-    public static void info(String message){__log(LogType.INFO, message, true);}
-    public static void debug(String message){__log(LogType.DEBUG, message, true);}
-    public static void error(String message){__log(LogType.ERROR, message, true);}
-    public static void trace(String message){__log(LogType.TRACE, message, true);}
-    public static void warning(String message){__log(LogType.WARNING, message, true);}
-    public static void update(String message){__log(LogType.UPDATE, message, true);}
+    public static void info(String message) {
+        __log(LogType.INFO, message, true);
+    }
+
+    public static void debug(String message) {
+        __log(LogType.DEBUG, message, true);
+    }
+
+    public static void error(String message) {
+        __log(LogType.ERROR, message, true);
+    }
+
+    public static void trace(String message) {
+        __log(LogType.TRACE, message, true);
+    }
+
+    public static void warning(String message) {
+        __log(LogType.WARNING, message, true);
+    }
+
+    public static void update(String message) {
+        __log(LogType.UPDATE, message, true);
+    }
+
     public static void log(String message, boolean print) {
         __log(LogType.INFO, message, print);
     }
+
     public static void log(String message) {
         __log(LogType.INFO, message, true);
     }
+
     public static void log(LogType logType, String message) {
         __log(logType, message, true);
     }
+
     public static void log(LogType logType, String message, boolean print) {
         __log(logType, message, print);
     }
+
     private static void __log(LogType logType, String message, boolean print) {
         String prefix = "";
         //TODO Check if noConsole was supplied as argument
         // if yes, set print to false
         if (logType == LogType.INFO) {
             if (print)
-                print(FORMAT.format(new Date()) + TextColor.CYAN + " INFO" +TextColor.RESET + "     | " + prefix + message + TextColor.RESET);
+                print(FORMAT.format(new Date()) + TextColor.CYAN + " INFO" + TextColor.RESET + "     | " + prefix + message + TextColor.RESET);
             _log(FORMAT.format(new Date()) + " INFO     | " + prefix + message);
         } else if (logType == LogType.ERROR) {
             if (print) {
                 if (isColored())
-                    print(FORMAT.format(new Date()) + TextColor.RED + " ERROR"+TextColor.RESET+"    | " + TextColor.RED + prefix + message + TextColor.RESET);
+                    print(FORMAT.format(new Date()) + TextColor.RED + " ERROR" + TextColor.RESET + "    | " + TextColor.RED + prefix + message + TextColor.RESET);
                 else print(FORMAT.format(new Date()) + " ERROR    | " + prefix + message);
             }
             _log(FORMAT.format(new Date()) + " ERROR    | " + prefix + message);
         } else if (logType == LogType.TRACE) {
-            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")){
+            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")) {
                 return;
             }
             if (print) {
@@ -90,7 +112,7 @@ public class Logger {
         } else if (logType == LogType.UPDATE) {
             if (print) {
                 if (isColored())
-                    print(FORMAT.format(new Date()) + TextColor.PURPLE + " UPDATE"+TextColor.RESET+"   | " + TextColor.PURPLE +  prefix + message + TextColor.RESET);
+                    print(FORMAT.format(new Date()) + TextColor.PURPLE + " UPDATE" + TextColor.RESET + "   | " + TextColor.PURPLE + prefix + message + TextColor.RESET);
                 else print(FORMAT.format(new Date()) + " UPDATE   | " + prefix + message);
             }
             _log(FORMAT.format(new Date()) + " UPDATE   | " + prefix + message);
@@ -103,13 +125,13 @@ public class Logger {
             _log(FORMAT.format(new Date()) + " !FATAL!  | " + prefix + message);
             Loki.getInstance().getEventManager().callEvent(new SupportBotFatalLogEvent(message));
         } else if (logType == LogType.DEBUG) {
-            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("debug") || !Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")){
+            if (!Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("debug") || !Loki.getInstance().getLokiConfiguration().logType.equalsIgnoreCase("trace")) {
                 return;
             }
             //TODO check if debugging is enabled for specific plugin
             if (print) {
                 if (isColored())
-                    print(FORMAT.format(new Date()) + TextColor.GREEN + " DEBUG"+TextColor.RESET+"    | " + TextColor.GREEN + prefix + message + TextColor.RESET);
+                    print(FORMAT.format(new Date()) + TextColor.GREEN + " DEBUG" + TextColor.RESET + "    | " + TextColor.GREEN + prefix + message + TextColor.RESET);
                 else print(FORMAT.format(new Date()) + " DEBUG    | " + prefix + message);
             }
             _log(FORMAT.format(new Date()) + " DEBUG    | " + prefix + message);
@@ -120,7 +142,7 @@ public class Logger {
         } else if (logType == LogType.WARNING) {
             if (print) {
                 if (isColored())
-                    print(FORMAT.format(new Date()) + TextColor.YELLOW + " WARNING"+TextColor.RESET+"  | " + TextColor.YELLOW + prefix + message + TextColor.RESET);
+                    print(FORMAT.format(new Date()) + TextColor.YELLOW + " WARNING" + TextColor.RESET + "  | " + TextColor.YELLOW + prefix + message + TextColor.RESET);
                 else print(FORMAT.format(new Date()) + " WARNING  | " + prefix + message);
             }
             _log(FORMAT.format(new Date()) + " WARNING  | " + prefix + message);
@@ -148,7 +170,7 @@ public class Logger {
         //int count = -1;
         //List<StackTraceHelper.ConstructedStackTraceElement> constructedStackTraceElement = StackTraceHelper.getElements(Thread.currentThread().getStackTrace());
         //for(StackTraceHelper.ConstructedStackTraceElement c : constructedStackTraceElement)
-            //_log(count++ + " | " + c.packageName);
+        //_log(count++ + " | " + c.packageName);
         return StackTraceHelper.getElements(Thread.currentThread().getStackTrace()).get(4).packageName;
     }
 

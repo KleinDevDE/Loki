@@ -13,7 +13,7 @@ public class ServerDefaultMessageNotificationLevelChangedEvent extends Event {
     private DefaultMessageNotificationLevel oldDefaultMessageNotificationLevel;
     private DefaultMessageNotificationLevel newDefaultMessageNotificationLevel;
 
-    public ServerDefaultMessageNotificationLevelChangedEvent(ServerChangeDefaultMessageNotificationLevelEvent e){
+    public ServerDefaultMessageNotificationLevelChangedEvent(ServerChangeDefaultMessageNotificationLevelEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldDefaultMessageNotificationLevel = e.getOldDefaultMessageNotificationLevel();

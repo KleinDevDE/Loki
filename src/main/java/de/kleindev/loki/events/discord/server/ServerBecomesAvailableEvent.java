@@ -9,7 +9,7 @@ public class ServerBecomesAvailableEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public ServerBecomesAvailableEvent(org.javacord.api.event.server.ServerBecomesAvailableEvent e){
+    public ServerBecomesAvailableEvent(org.javacord.api.event.server.ServerBecomesAvailableEvent e) {
         api = e.getApi();
         server = e.getServer();
     }

@@ -12,7 +12,7 @@ public class ServerChannelCreatedEvent extends Event {
     private ServerChannel serverChannel;
     private Server server;
 
-    public ServerChannelCreatedEvent(ServerChannelCreateEvent e){
+    public ServerChannelCreatedEvent(ServerChannelCreateEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

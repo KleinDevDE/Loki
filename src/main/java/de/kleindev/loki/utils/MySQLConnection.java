@@ -10,8 +10,8 @@ public class MySQLConnection {
     public MySQLConnection(String host, String port, String database, String username, String password, boolean ssl, boolean readOnly, boolean autoReconnect) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection=DriverManager.getConnection(
-                    "jdbc:mysql://"+host+":"+port+"/"+database+"?serverTimezone=UTC&autoReconnect="+autoReconnect+"&useSSL="+ssl,username,password);
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://" + host + ":" + port + "/" + database + "?serverTimezone=UTC&autoReconnect=" + autoReconnect + "&useSSL=" + ssl, username, password);
             connection.setSavepoint(String.valueOf(System.currentTimeMillis()));
             connection.setReadOnly(readOnly);
             sendPing();
@@ -20,7 +20,7 @@ public class MySQLConnection {
         }
     }
 
-    public void disconnect(){
+    public void disconnect() {
         try {
             connection.close();
         } catch (SQLException e) {
@@ -28,7 +28,7 @@ public class MySQLConnection {
         }
     }
 
-    public PreparedStatement preparedStatement(String sql){
+    public PreparedStatement preparedStatement(String sql) {
         try {
             return connection.prepareStatement(sql);
         } catch (SQLException e) {
@@ -36,7 +36,7 @@ public class MySQLConnection {
         }
     }
 
-    public SQLWarning getWarnings(){
+    public SQLWarning getWarnings() {
         try {
             return connection.getWarnings();
         } catch (SQLException e) {
@@ -44,14 +44,14 @@ public class MySQLConnection {
         }
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return this.connection;
     }
 
-    private void sendPing(){
+    private void sendPing() {
         Timer timer = new Timer();
-        timer.schedule(new TimerTask(){
-            public void run(){
+        timer.schedule(new TimerTask() {
+            public void run() {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT 1;");
                     preparedStatement.executeQuery();

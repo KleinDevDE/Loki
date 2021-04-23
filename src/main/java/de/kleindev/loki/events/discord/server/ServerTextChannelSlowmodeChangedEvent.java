@@ -23,7 +23,7 @@ public class ServerTextChannelSlowmodeChangedEvent extends Event {
     private int newSlowDelay;
 
 
-    public ServerTextChannelSlowmodeChangedEvent(ServerTextChannelChangeSlowmodeEvent e){
+    public ServerTextChannelSlowmodeChangedEvent(ServerTextChannelChangeSlowmodeEvent e) {
         api = e.getApi();
         server = e.getServer();
         channel = e.getChannel();

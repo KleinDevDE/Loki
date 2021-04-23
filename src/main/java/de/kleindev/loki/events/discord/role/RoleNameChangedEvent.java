@@ -14,7 +14,7 @@ public class RoleNameChangedEvent extends Event {
     private Role role;
     private Server server;
 
-    public RoleNameChangedEvent(RoleChangeNameEvent e){
+    public RoleNameChangedEvent(RoleChangeNameEvent e) {
         newName = e.getNewName();
         oldName = e.getOldName();
         role = e.getRole();

@@ -12,7 +12,7 @@ public class CustomEmojiDeletedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public CustomEmojiDeletedEvent(KnownCustomEmojiDeleteEvent e){
+    public CustomEmojiDeletedEvent(KnownCustomEmojiDeleteEvent e) {
         knownCustomEmoji = e.getEmoji();
         api = e.getApi();
         server = e.getServer();

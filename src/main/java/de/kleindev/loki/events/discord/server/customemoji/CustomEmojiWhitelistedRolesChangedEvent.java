@@ -18,7 +18,7 @@ public class CustomEmojiWhitelistedRolesChangedEvent extends Event {
     private Optional<Collection<Role>> newWhitelistedRoles;
     private Optional<Collection<Role>> oldWhitelsitedRoles;
 
-    public CustomEmojiWhitelistedRolesChangedEvent(KnownCustomEmojiChangeWhitelistedRolesEvent e){
+    public CustomEmojiWhitelistedRolesChangedEvent(KnownCustomEmojiChangeWhitelistedRolesEvent e) {
         knownCustomEmoji = e.getEmoji();
         api = e.getApi();
         server = e.getServer();

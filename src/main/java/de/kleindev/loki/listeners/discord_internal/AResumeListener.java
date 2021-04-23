@@ -7,6 +7,6 @@ import org.javacord.api.listener.connection.ResumeListener;
 public class AResumeListener implements ResumeListener {
     @Override
     public void onResume(ResumeEvent e) {
-        
+
     }
 }

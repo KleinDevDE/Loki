@@ -12,7 +12,7 @@ public class ServerMemberLeavedEvent extends Event {
     private Server server;
     private User user;
 
-    public ServerMemberLeavedEvent(ServerMemberLeaveEvent e){
+    public ServerMemberLeavedEvent(ServerMemberLeaveEvent e) {
         api = e.getApi();
         server = e.getServer();
         user = e.getUser();

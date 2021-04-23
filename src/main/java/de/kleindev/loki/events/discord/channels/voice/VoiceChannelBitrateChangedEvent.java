@@ -8,38 +8,38 @@ import org.javacord.api.event.channel.server.voice.ServerVoiceChannelChangeBitra
 
 
 public class VoiceChannelBitrateChangedEvent extends Event {
-	private Server server;
-	private int newBitrate;
-	private ServerVoiceChannel channel;
-	private int oldBitrate;
-	private DiscordApi api;
+    private Server server;
+    private int newBitrate;
+    private ServerVoiceChannel channel;
+    private int oldBitrate;
+    private DiscordApi api;
 
-	public VoiceChannelBitrateChangedEvent(ServerVoiceChannelChangeBitrateEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.newBitrate = javaCordEvent.getNewBitrate();
-		this.channel = javaCordEvent.getChannel();
-		this.oldBitrate = javaCordEvent.getOldBitrate();
-		this.api = javaCordEvent.getApi();
-	}
+    public VoiceChannelBitrateChangedEvent(ServerVoiceChannelChangeBitrateEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.newBitrate = javaCordEvent.getNewBitrate();
+        this.channel = javaCordEvent.getChannel();
+        this.oldBitrate = javaCordEvent.getOldBitrate();
+        this.api = javaCordEvent.getApi();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public int getNewBitrate() {
-		return newBitrate;
-	}
+    public int getNewBitrate() {
+        return newBitrate;
+    }
 
-	public ServerVoiceChannel getChannel() {
-		return channel;
-	}
+    public ServerVoiceChannel getChannel() {
+        return channel;
+    }
 
-	public int getOldBitrate() {
-		return oldBitrate;
-	}
+    public int getOldBitrate() {
+        return oldBitrate;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
 }

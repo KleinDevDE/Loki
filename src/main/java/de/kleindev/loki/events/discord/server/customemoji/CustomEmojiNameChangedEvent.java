@@ -14,7 +14,7 @@ public class CustomEmojiNameChangedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public CustomEmojiNameChangedEvent(KnownCustomEmojiChangeNameEvent e){
+    public CustomEmojiNameChangedEvent(KnownCustomEmojiChangeNameEvent e) {
         knownCustomEmoji = e.getEmoji();
         api = e.getApi();
         server = e.getServer();

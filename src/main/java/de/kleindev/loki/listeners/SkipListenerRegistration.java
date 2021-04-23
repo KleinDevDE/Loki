@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
  * This annotation prevents classes from registering by package path
  */
 @Retention(RetentionPolicy.RUNTIME)
- @Target(ElementType.TYPE)
+@Target(ElementType.TYPE)
 public @interface SkipListenerRegistration {
 }

@@ -12,7 +12,7 @@ public class ServerChannelDeletedEvent extends Event {
     private ServerChannel serverChannel;
     private Server server;
 
-    public ServerChannelDeletedEvent(ServerChannelDeleteEvent e){
+    public ServerChannelDeletedEvent(ServerChannelDeleteEvent e) {
         api = e.getApi();
         serverChannel = e.getChannel();
         server = e.getServer();

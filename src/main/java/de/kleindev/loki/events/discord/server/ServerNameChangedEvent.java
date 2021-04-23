@@ -12,7 +12,7 @@ public class ServerNameChangedEvent extends Event {
     private DiscordApi api;
     private Server server;
 
-    public ServerNameChangedEvent(ServerChangeNameEvent e){
+    public ServerNameChangedEvent(ServerChangeNameEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldName = e.getOldName();

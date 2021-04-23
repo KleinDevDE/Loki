@@ -12,18 +12,26 @@ import org.javacord.api.entity.user.UserStatus;
 
 public class Loki {
     private static Loki INSTANCE;
-    @Getter @Setter(AccessLevel.PROTECTED) private DiscordApi discordApi;
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    private DiscordApi discordApi;
 
     // Managers
-    @Getter private final EventManager eventManager;
-    @Getter private final PluginManager pluginManager;
-    @Getter private final CommandManager commandManager;
-    @Getter private final DatabaseManager databaseManager;
-    @Getter private final PermissionManager permissionManager;
-    @Getter private final LokiConfiguration lokiConfiguration;
+    @Getter
+    private final EventManager eventManager;
+    @Getter
+    private final PluginManager pluginManager;
+    @Getter
+    private final CommandManager commandManager;
+    @Getter
+    private final DatabaseManager databaseManager;
+    @Getter
+    private final PermissionManager permissionManager;
+    @Getter
+    private final LokiConfiguration lokiConfiguration;
 
 
-    public Loki(LokiConfiguration lokiConfiguration){
+    public Loki(LokiConfiguration lokiConfiguration) {
         Loki.INSTANCE = this;
         this.lokiConfiguration = lokiConfiguration;
         this.eventManager = new EventManager();
@@ -37,7 +45,7 @@ public class Loki {
         return Loki.INSTANCE;
     }
 
-    public void reload(){
+    public void reload() {
         Loki.getInstance().getDiscordApi().updateStatus(UserStatus.IDLE);
         Loki.getInstance().getDiscordApi().updateActivity(ActivityType.PLAYING, "Reloading...");
 

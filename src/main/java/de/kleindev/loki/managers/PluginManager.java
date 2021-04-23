@@ -74,7 +74,7 @@ public class PluginManager {
     }
 
     public PluginDescription getPluginDescription(String name) {
-         return getPluginEntry(name.toLowerCase()).botPlugin.getPluginDescription();
+        return getPluginEntry(name.toLowerCase()).botPlugin.getPluginDescription();
     }
 
     public void unloadPlugin(BotPlugin botPlugin) {
@@ -89,7 +89,7 @@ public class PluginManager {
 
     public Collection<BotPlugin> getActivePlugins() {
         List<BotPlugin> plugins = new ArrayList<>();
-        for(Map.Entry<String, PluginEntry> entry : pluginHashMap.entrySet()){
+        for (Map.Entry<String, PluginEntry> entry : pluginHashMap.entrySet()) {
             plugins.add(entry.getValue().botPlugin);
         }
         return plugins;
@@ -97,23 +97,23 @@ public class PluginManager {
 
     public String getPluginNameByPackage(String pack) {
         for (Map.Entry<String, PluginEntry> entry : pluginHashMap.entrySet()) {
-            if (entry.getValue().packagePath.equals(pack) || entry.getValue().packagePath.startsWith(pack)){
+            if (entry.getValue().packagePath.equals(pack) || entry.getValue().packagePath.startsWith(pack)) {
                 return entry.getValue().botPlugin.getPluginDescription().getPluginName();
             }
         }
         return "";
     }
 
-    protected PluginEntry getPluginEntry(String pluginName){
+    protected PluginEntry getPluginEntry(String pluginName) {
         return pluginHashMap.getOrDefault(pluginName, new PluginEntry());
     }
 
-    public void reloadPlugin(BotPlugin botPlugin){
+    public void reloadPlugin(BotPlugin botPlugin) {
         Agent.reloadClasses(pluginHashMap.get(botPlugin.getPluginID()).packagePath);
         botPlugin.reload();
     }
 
-    private static class PluginEntry{
+    private static class PluginEntry {
         public UUID pluginID = null;
         public File pluginFile = null;
         public BotPlugin botPlugin = null;

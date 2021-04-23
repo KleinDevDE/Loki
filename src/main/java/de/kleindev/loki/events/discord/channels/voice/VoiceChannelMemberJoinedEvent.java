@@ -11,38 +11,38 @@ import java.util.Optional;
 
 
 public class VoiceChannelMemberJoinedEvent extends Event {
-	private Server server;
-	private ServerVoiceChannel channel;
-	private DiscordApi api;
-	private Optional<ServerVoiceChannel> oldChannel;
-	private User user;
+    private Server server;
+    private ServerVoiceChannel channel;
+    private DiscordApi api;
+    private Optional<ServerVoiceChannel> oldChannel;
+    private User user;
 
-	public VoiceChannelMemberJoinedEvent(ServerVoiceChannelMemberJoinEvent javaCordEvent) {
-		this.server = javaCordEvent.getServer();
-		this.channel = javaCordEvent.getChannel();
-		this.api = javaCordEvent.getApi();
-		this.oldChannel = javaCordEvent.getOldChannel();
-		this.user = javaCordEvent.getUser();
-	}
+    public VoiceChannelMemberJoinedEvent(ServerVoiceChannelMemberJoinEvent javaCordEvent) {
+        this.server = javaCordEvent.getServer();
+        this.channel = javaCordEvent.getChannel();
+        this.api = javaCordEvent.getApi();
+        this.oldChannel = javaCordEvent.getOldChannel();
+        this.user = javaCordEvent.getUser();
+    }
 
-	public Server getServer() {
-		return server;
-	}
+    public Server getServer() {
+        return server;
+    }
 
-	public ServerVoiceChannel getChannel() {
-		return channel;
-	}
+    public ServerVoiceChannel getChannel() {
+        return channel;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public Optional<ServerVoiceChannel> getOldChannel() {
-		return oldChannel;
-	}
+    public Optional<ServerVoiceChannel> getOldChannel() {
+        return oldChannel;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
 }

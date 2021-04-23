@@ -9,7 +9,8 @@ public abstract class BotPlugin {
     private static PluginDescription pluginDescription;
     private static File dataFolder;
     private static File pluginFile;
-    @Getter private UUID pluginID;
+    @Getter
+    private UUID pluginID;
 
     public static File getDataFolder() {
         dataFolder.mkdir();

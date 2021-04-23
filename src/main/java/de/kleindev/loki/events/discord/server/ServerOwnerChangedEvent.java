@@ -13,7 +13,7 @@ public class ServerOwnerChangedEvent extends Event {
     private User oldOwner;
     private User newOwner;
 
-    public ServerOwnerChangedEvent(ServerChangeOwnerEvent e){
+    public ServerOwnerChangedEvent(ServerChangeOwnerEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldOwner = e.getOldOwner().get();

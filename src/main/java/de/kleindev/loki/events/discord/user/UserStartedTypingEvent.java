@@ -13,44 +13,44 @@ import java.util.Optional;
 
 
 public class UserStartedTypingEvent extends Event {
-	private Optional<GroupChannel> groupChannel;
-	private TextChannel channel;
-	private Optional<PrivateChannel> privateChannel;
-	private DiscordApi api;
-	private User user;
-	private Optional<ServerTextChannel> serverTextChannel;
+    private Optional<GroupChannel> groupChannel;
+    private TextChannel channel;
+    private Optional<PrivateChannel> privateChannel;
+    private DiscordApi api;
+    private User user;
+    private Optional<ServerTextChannel> serverTextChannel;
 
-	public UserStartedTypingEvent(UserStartTypingEvent javaCordEvent) {
-		this.groupChannel = javaCordEvent.getGroupChannel();
-		this.channel = javaCordEvent.getChannel();
-		this.privateChannel = javaCordEvent.getPrivateChannel();
-		this.api = javaCordEvent.getApi();
-		this.user = javaCordEvent.getUser().get();
-		this.serverTextChannel = javaCordEvent.getServerTextChannel();
-	}
+    public UserStartedTypingEvent(UserStartTypingEvent javaCordEvent) {
+        this.groupChannel = javaCordEvent.getGroupChannel();
+        this.channel = javaCordEvent.getChannel();
+        this.privateChannel = javaCordEvent.getPrivateChannel();
+        this.api = javaCordEvent.getApi();
+        this.user = javaCordEvent.getUser().get();
+        this.serverTextChannel = javaCordEvent.getServerTextChannel();
+    }
 
-	public Optional<GroupChannel> getGroupChannel() {
-		return groupChannel;
-	}
+    public Optional<GroupChannel> getGroupChannel() {
+        return groupChannel;
+    }
 
-	public TextChannel getChannel() {
-		return channel;
-	}
+    public TextChannel getChannel() {
+        return channel;
+    }
 
-	public Optional<PrivateChannel> getPrivateChannel() {
-		return privateChannel;
-	}
+    public Optional<PrivateChannel> getPrivateChannel() {
+        return privateChannel;
+    }
 
-	public DiscordApi getApi() {
-		return api;
-	}
+    public DiscordApi getApi() {
+        return api;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public Optional<ServerTextChannel> getServerTextChannel() {
-		return serverTextChannel;
-	}
+    public Optional<ServerTextChannel> getServerTextChannel() {
+        return serverTextChannel;
+    }
 
 }

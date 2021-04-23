@@ -29,6 +29,7 @@ public class Main {
     private static String[] savedArgs;
     private static CommandLine commandLine;
     public final static String VERSION = "1.0";
+
     public static String[] getArgs() {
         return savedArgs;
     }
@@ -52,17 +53,17 @@ public class Main {
         listenCommands();
     }
 
-    private static void registerShutdownHook(){
-        Runtime.getRuntime().addShutdownHook(new Thread(()-> {
+    private static void registerShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             Loki.getInstance().getDiscordApi().updateStatus(UserStatus.OFFLINE);
-            if(ApplicationManager.shouldReboot)
+            if (ApplicationManager.shouldReboot)
                 return;
             Loki.getInstance().getEventManager().callEvent(new SupportBotShutdownEvent());
             Loki.getInstance().getDiscordApi().disconnect();
         }));
     }
 
-    private static void initBot(){
+    private static void initBot() {
         Loki.getInstance().getEventManager().callEvent(new SupportBotLoginEvent());
         DiscordApiBuilder builder = new DiscordApiBuilder();
         builder.setToken(Loki.getInstance().getLokiConfiguration().discordBotToken);
@@ -148,18 +149,18 @@ public class Main {
         Loki.getInstance().getDiscordApi().updateActivity(ActivityType.PLAYING, VERSION);
     }
 
-    private static void initPlugins(){
+    private static void initPlugins() {
         File pluginsFolder = new File(Loki.getInstance().getLokiConfiguration().pluginsFolder);
-        if (!pluginsFolder.exists()){
+        if (!pluginsFolder.exists()) {
             pluginsFolder.mkdirs();
         }
-        for(File f : pluginsFolder.listFiles()){
+        for (File f : pluginsFolder.listFiles()) {
             Loki.getInstance().getPluginManager().loadPlugin(f);
         }
     }
 
-    private static void listenCommands(){
-        new Thread(()->{
+    private static void listenCommands() {
+        new Thread(() -> {
             Scanner scanner = new Scanner(System.in);
             String cmd = "";
             while (true) {
@@ -179,7 +180,7 @@ public class Main {
         }).start();
     }
 
-    private static void initTables(){
+    private static void initTables() {
 //        MySQLConnection eobot = SupportBot.getInstance().getMySQLConnection("eobot");
 //        try {
 //            eobot.preparedStatement("").execute();
@@ -188,7 +189,7 @@ public class Main {
 //        }
     }
 
-    private static void parseArgs(String[] args){
+    private static void parseArgs(String[] args) {
         Options options = new Options();
         Option config = Option.builder()
                 .longOpt("config")

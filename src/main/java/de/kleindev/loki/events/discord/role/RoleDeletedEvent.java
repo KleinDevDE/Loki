@@ -12,7 +12,7 @@ public class RoleDeletedEvent extends Event {
     private Server server;
     private Role role;
 
-    public RoleDeletedEvent(RoleDeleteEvent e){
+    public RoleDeletedEvent(RoleDeleteEvent e) {
         api = e.getApi();
         server = e.getServer();
         role = e.getRole();

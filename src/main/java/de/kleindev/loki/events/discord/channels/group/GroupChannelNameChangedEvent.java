@@ -20,7 +20,7 @@ public class GroupChannelNameChangedEvent extends Event {
     private Optional<PrivateChannel> privateChannel;
     private Optional<ServerTextChannel> serverTextChannel;
 
-    public GroupChannelNameChangedEvent(GroupChannelChangeNameEvent e){
+    public GroupChannelNameChangedEvent(GroupChannelChangeNameEvent e) {
         api = e.getApi();
         oldName = e.getOldName();
         newName = e.getNewName();

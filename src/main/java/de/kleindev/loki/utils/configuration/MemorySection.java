@@ -24,7 +24,7 @@ public class MemorySection implements ConfigurationSection {
      * will throw an exception!
      *
      * @throws IllegalStateException Thrown if this is not a {@link
-     *     Configuration} root.
+     *                               Configuration} root.
      */
     protected MemorySection() {
         if (!(this instanceof Configuration)) {
@@ -41,10 +41,10 @@ public class MemorySection implements ConfigurationSection {
      * Creates an empty MemorySection with the specified parent and path.
      *
      * @param parent Parent section that contains this own section.
-     * @param path Path that you may access this section from via the root
-     *     {@link Configuration}.
+     * @param path   Path that you may access this section from via the root
+     *               {@link Configuration}.
      * @throws IllegalArgumentException Thrown is parent or path is null, or
-     *     if parent contains no root Configuration.
+     *                                  if parent contains no root Configuration.
      */
     protected MemorySection(ConfigurationSection parent, String path) {
         Validate.notNull(parent, "Parent cannot be null");
@@ -292,12 +292,12 @@ public class MemorySection implements ConfigurationSection {
 
     public int getInt(String path) {
         Object def = getDefault(path);
-        return getInt(path, (def instanceof Number) ? (int)def : 0);
+        return getInt(path, (def instanceof Number) ? (int) def : 0);
     }
 
     public int getInt(String path, int def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? (int)val : def;
+        return (val instanceof Number) ? (int) val : def;
     }
 
     public boolean isInt(String path) {
@@ -322,12 +322,12 @@ public class MemorySection implements ConfigurationSection {
 
     public double getDouble(String path) {
         Object def = getDefault(path);
-        return getDouble(path, (def instanceof Number) ? (double)def : 0);
+        return getDouble(path, (def instanceof Number) ? (double) def : 0);
     }
 
     public double getDouble(String path, double def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? (double)val : def;
+        return (val instanceof Number) ? (double) val : def;
     }
 
     public boolean isDouble(String path) {
@@ -337,12 +337,12 @@ public class MemorySection implements ConfigurationSection {
 
     public long getLong(String path) {
         Object def = getDefault(path);
-        return getLong(path, (def instanceof Number) ? (long)def : 0);
+        return getLong(path, (def instanceof Number) ? (long) def : 0);
     }
 
     public long getLong(String path, long def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? (long)val : def;
+        return (val instanceof Number) ? (long) val : def;
     }
 
     public boolean isLong(String path) {
@@ -709,7 +709,7 @@ public class MemorySection implements ConfigurationSection {
      * only {@link MemorySection}.
      *
      * @param section Section to create a path for.
-     * @param key Name of the specified section.
+     * @param key     Name of the specified section.
      * @return Full path of the section from its root.
      */
     public static String createPath(ConfigurationSection section, String key) {
@@ -723,8 +723,8 @@ public class MemorySection implements ConfigurationSection {
      * You may use this method for any given {@link ConfigurationSection}, not
      * only {@link MemorySection}.
      *
-     * @param section Section to create a path for.
-     * @param key Name of the specified section.
+     * @param section    Section to create a path for.
+     * @param key        Name of the specified section.
      * @param relativeTo Section to create the path relative to.
      * @return Full path of the section from its root.
      */
@@ -762,12 +762,12 @@ public class MemorySection implements ConfigurationSection {
     public String toString() {
         Configuration root = getRoot();
         return new StringBuilder()
-            .append(getClass().getSimpleName())
-            .append("[path='")
-            .append(getCurrentPath())
-            .append("', root='")
-            .append(root == null ? null : root.getClass().getSimpleName())
-            .append("']")
-            .toString();
+                .append(getClass().getSimpleName())
+                .append("[path='")
+                .append(getCurrentPath())
+                .append("', root='")
+                .append(root == null ? null : root.getClass().getSimpleName())
+                .append("']")
+                .toString();
     }
 }

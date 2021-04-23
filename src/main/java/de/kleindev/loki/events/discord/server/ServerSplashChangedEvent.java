@@ -15,7 +15,7 @@ public class ServerSplashChangedEvent extends Event {
     private Optional<Icon> oldSPlash;
     private Optional<Icon> newSPlash;
 
-    public ServerSplashChangedEvent(ServerChangeSplashEvent e){
+    public ServerSplashChangedEvent(ServerChangeSplashEvent e) {
         api = e.getApi();
         server = e.getServer();
         oldSPlash = e.getOldSplash();

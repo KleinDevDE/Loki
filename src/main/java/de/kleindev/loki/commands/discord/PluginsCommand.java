@@ -17,11 +17,11 @@ public class PluginsCommand extends Command {
         Response response = new Response(commandSender.getMessage());
         response.setDeletionTime(-1);
         Collection<BotPlugin> plugins = Loki.getInstance().getPluginManager().getActivePlugins();
-        response.setTitle("Plugins ("+plugins.size()+"):");
+        response.setTitle("Plugins (" + plugins.size() + "):");
         Response.EmbedListBuilder embedListBuilder = response.getEmbedListBuilder("Plugin (version)", "Autor");
 
-        for(BotPlugin plugin : plugins){
-            embedListBuilder.addLine(plugin.getPluginDescription().getPluginName() + " ("+plugin.getPluginDescription().getVersion()+")", String.join(", "));
+        for (BotPlugin plugin : plugins) {
+            embedListBuilder.addLine(plugin.getPluginDescription().getPluginName() + " (" + plugin.getPluginDescription().getVersion() + ")", String.join(", "));
         }
         response = embedListBuilder.build();
         response.send(false);

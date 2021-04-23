@@ -1,30 +1,24 @@
 package de.kleindev.loki.utils;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
 public class WebClient {
-    public static String getContent(String url){
-        try {
-            URL url1 = new URL(url);
-            URLConnection con = url1.openConnection();
-            InputStream in = con.getInputStream();
-            String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
-            encoding = encoding == null ? "UTF-8" : encoding;
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] buf = new byte[8192];
-            int len = 0;
-            while ((len = in.read(buf)) != -1) {
-                baos.write(buf, 0, len);
-            }
-            return new String(baos.toByteArray(), encoding);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static String getContent(String url) throws IOException {
+        URL url1 = new URL(url);
+        URLConnection con = url1.openConnection();
+        InputStream in = con.getInputStream();
+        String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
+        encoding = encoding == null ? "UTF-8" : encoding;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buf = new byte[8192];
+        int len = 0;
+        while ((len = in.read(buf)) != -1) {
+            baos.write(buf, 0, len);
         }
-        return null;
+        return baos.toString(encoding);
     }
 
     public static void downloadImage(String url, String name) {
@@ -48,7 +42,7 @@ public class WebClient {
         }
     }
 
-    public static byte[]  getDownloadedBytes(String url){
+    public static byte[] getDownloadedBytes(String url) {
         try {
             URL link = new URL(url);
             InputStream in = new BufferedInputStream(link.openStream());

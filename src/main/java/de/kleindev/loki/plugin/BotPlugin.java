@@ -9,8 +9,7 @@ public abstract class BotPlugin {
     private static PluginDescription pluginDescription;
     private static File dataFolder;
     private static File pluginFile;
-    @Getter
-    private UUID pluginID;
+    private static UUID pluginID;
 
     public static File getDataFolder() {
         dataFolder.mkdir();
@@ -37,8 +36,13 @@ public abstract class BotPlugin {
     }
 
     public final void set(final UUID pluginID, final File pluginFile, final File dataFolder, final PluginDescription pluginDescription) {
+        BotPlugin.pluginID = pluginID;
         BotPlugin.pluginDescription = pluginDescription;
         BotPlugin.dataFolder = dataFolder;
         BotPlugin.pluginFile = pluginFile;
+    }
+
+    public UUID getPluginID() {
+        return pluginID;
     }
 }

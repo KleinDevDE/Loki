@@ -13,7 +13,7 @@ public class LokiConfiguration extends Config {
     @ConfigPath(path = "discord.bot-token")
     public String discordBotToken = "XXX_TOKEN_XXX";
     @ConfigPath(path = "discord.nickname")
-    public String discordNickname = "EoBot";
+    public String discordNickname = "Loki";
     @ConfigPath(path = "discord.commandPrefix")
     public String commandPrefix = "!";
     @ConfigPath(path = "discord.status.type", description = "LISTENING | PLAYING | STREAMING | WATCHING")

@@ -31,7 +31,7 @@ import java.util.Scanner;
 public class Main {
     private static String[] savedArgs;
     private static CommandLine commandLine;
-    public final static String VERSION = "1.0";
+    public final static String VERSION = "1.0-pre1";
 
     public static String[] getArgs() {
         return savedArgs;

@@ -7,7 +7,7 @@ import java.util.TimerTask;
 public class MySQLConnection {
     private Connection connection;
 
-    public MySQLConnection(String host, String port, String database, String username, String password, boolean ssl, boolean readOnly, boolean autoReconnect) {
+    public MySQLConnection(String host, int port, String database, String username, String password, boolean ssl, boolean readOnly, boolean autoReconnect) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
@@ -15,8 +15,8 @@ public class MySQLConnection {
             connection.setSavepoint(String.valueOf(System.currentTimeMillis()));
             connection.setReadOnly(readOnly);
             sendPing();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+        } catch (ClassNotFoundException | SQLException throwables) {
+            ExceptionHandler.handle(throwables);
         }
     }
 

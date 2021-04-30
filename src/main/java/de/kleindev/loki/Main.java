@@ -16,6 +16,8 @@ import de.kleindev.loki.listeners.discord_internal.user.*;
 import de.kleindev.loki.logging.Logger;
 import de.kleindev.loki.plugin.InternalPlugin;
 import de.kleindev.loki.utils.ApplicationManager;
+import de.kleindev.loki.utils.ExceptionHandler;
+import de.kleindev.loki.utils.MySQLConnection;
 import org.apache.commons.cli.*;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.activity.ActivityType;
@@ -23,6 +25,7 @@ import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -181,12 +184,29 @@ public class Main {
     }
 
     private static void initTables() {
-//        MySQLConnection eobot = SupportBot.getInstance().getMySQLConnection("eobot");
-//        try {
-//            eobot.preparedStatement("").execute();
-//        } catch (SQLException e) {
-//            ExceptionHandler.handle(e);
-//        }
+        MySQLConnection eobot = Loki.getInstance().getDatabaseManager().getMySQLConnection("loki");
+        if (eobot == null){
+            Logger.error("No valid MySQL connection found!");
+            return;
+        }
+
+        try {
+            // Table todo_list
+            eobot.preparedStatement("CREATE TABLE `todo_list` (\n" +
+                    "\t`pkToDoID` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "\t`intServerID` INT(11) NOT NULL,\n" +
+                    "\t`intUserID` INT(11) NOT NULL,\n" +
+                    "\t`strMessage` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',\n" +
+                    "\t`datCreated` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n" +
+                    "\tPRIMARY KEY (`pkToDoID`) USING BTREE\n" +
+                    ")\n" +
+                    "COMMENT='This table stores every todo which are set with \"[prefix]todo <message>\"'\n" +
+                    "COLLATE='utf8mb4_general_ci'\n" +
+                    "ENGINE=InnoDB\n" +
+                    ";\n").execute();
+        } catch (SQLException e) {
+            ExceptionHandler.handle(e);
+        }
     }
 
     private static void parseArgs(String[] args) {
@@ -206,5 +226,9 @@ public class Main {
             System.err.println("Commandline parsing failed. Reason: " + e.getMessage());
         }
 
+    }
+
+    private void registerMySQLConnections(){
+//        File mySQLFolder = new File(Loki.getInstance().getLokiConfiguration().);
     }
 }

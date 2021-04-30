@@ -109,7 +109,12 @@ public class PluginManager {
     }
 
     public void reloadPlugin(BotPlugin botPlugin) {
-        Agent.reloadClasses(pluginHashMap.get(botPlugin.getPluginID()).packagePath);
+        Logger.info("Reloading plugin " + botPlugin.getPluginDescription().getPluginName());
+        if (!pluginHashMap.containsKey(botPlugin.getPluginDescription().getPluginName().toLowerCase())){
+            Logger.error("Could not reload this plugin cause it doesn't exists in the pluginManager!?");
+            return;
+        }
+        Agent.reloadClasses(pluginHashMap.get(botPlugin.getPluginDescription().getPluginName().toLowerCase()).packagePath);
         botPlugin.reload();
     }
 
